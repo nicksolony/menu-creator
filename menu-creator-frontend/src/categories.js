@@ -8,4 +8,10 @@ class Category {
   static findCategory(key,value) {
     return (this.all_categories.find(element=>{return element[key]===value}))
   }
+
+  displayCategory(){
+    let ul = document.createElement('ul')
+    ul.id = 'dishCategory'
+
+  }
 }
