@@ -32,12 +32,17 @@ Things you may want to cover:
 ## Models
 * dish
   * Name
-  * Category
+  * Category (belongs to)
   * Description
   * Price
+  * menus (has many)
 * menu
   * Name
-  * Dishes
+  * Dishes (has many)
+  * categories through dishes (has many through)
 * category
   * Name
-  * Dishes
+  * Dishes (has many)
+* menu_dish
+  * menues
+  * dishes
