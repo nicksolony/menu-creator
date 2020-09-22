@@ -1,14 +1,19 @@
-function addCategory(body)  {
-  // fetch(`${BACKEND_URL}/categories`),{
-  //   method: 'POST',
-  //    headers: {
-  //     'content-type': 'application/json'
-  //    },
-  //    body: JSON.stringify(body)
-  //  }
-  //  .then(resp=>resp.json())
-  //  .then(data=>{
-  //    const addedCategory = new Category(data.name, data.id);
-  //    addedCategory.displayCategory();
-  //  })
-  }
+function createNewCategory(data) {
+  fetch(`${BACKEND_URL}/categories`, {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+  .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
+  return response.json() })
+  .then(data => {
+    console.log(data);
+    const addedCategory = new Category(data.name, data.id);
+    addedCategory.displayCategory();
+  })
+  .catch((error) => {
+    window.alert(error)
+  })
+}

@@ -32,5 +32,5 @@ window.addEventListener('click',(e)=>{
 
   if (e.target.className === 'editCategory') {
   e.preventDefault();
-  console.log(e.target)}
+  console.log(e.target)} // should be editing  category
 })
