@@ -30,4 +30,5 @@ Things you may want to cover:
 
 ## Models
 * dish
-  * 
+  ** Name
+  ** 
