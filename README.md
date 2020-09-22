@@ -44,5 +44,5 @@ Things you may want to cover:
   * Name
   * Dishes (has many)
 * menu_dish
-  * menues
+  * menus
   * dishes
