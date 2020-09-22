@@ -13,27 +13,43 @@ window.addEventListener('DOMContentLoaded',(e)=>{
 
 window.addEventListener('click',(e)=>{
   if (e.target.id === 'addCategory') {
-    let tr = document.createElement('tr')
-    let td = document.createElement('td')
-    td.className = 'dishCategory'
-    const newCategoryForm = document.createElement('form')
-    newCategoryForm.id = 'newCategoryForm'
+    createAddCategoryButton();
+  };
+
+  if (e.target.id === 'AddCategoryButton') {
+    e.preventDefault();
+    const form = e.target.parentNode;
+    const newCategory = form.newCategory.value;
 
 
-    const input = document.createElement('input')
-    input.name = 'newCategory'
-    input.value=''
-    input.placeholder = 'Add new category'
+    // fetch(`${BACKEND_URL}/categories`),{
+    //   method: 'POST',
+    //    headers: {
+    //     'content-type': 'application/json'
+    //    },
+    //    body: JSON.stringify({name: newCategory})
+    //  }
+    //  .then(resp=>resp.json())
+    //  .then(data=>{
+    //    const addedCategory = new Category(data.name, data.id);
+    //    addedCategory.displayCategory();
+    //  })
+    const data = { name: newCategory };
 
-    const formButton=document.createElement('input')
-    formButton.type = 'submit'
-    formButton.value = 'Add Category'
-    formButton.id = 'AddCategoryButton'
-    newCategoryForm.appendChild(input)
-    newCategoryForm.appendChild(formButton)
-
-    td.appendChild(newCategoryForm)
-    tr.appendChild(td)
-    dishTable.appendChild(tr)
+    fetch(`${BACKEND_URL}/categories`, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+      const addedCategory = new Category(data.name, data.id);
+      addedCategory.displayCategory();
+    })
+    .catch((error) => {
+      alert(error);
+    });
   }
 })

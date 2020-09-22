@@ -20,5 +20,4 @@ class Category {
     dishTable.appendChild(tr);
   }
 
-
 }
