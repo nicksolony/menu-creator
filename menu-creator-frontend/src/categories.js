@@ -14,7 +14,10 @@ class Category {
     let li = document.createElement('li')
     li.className = 'dishCategory'
     li.id = this.id
-    li.innerText=this.name
+    let link = document.createElement('a')
+    link.setAttribute('href',`${BACKEND_URL}/categories/${this.id}`)
+    link.innerText=this.name
+    li.appendChild(link)
     categoriesList.appendChild(li);
   }
 

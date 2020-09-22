@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded',(e)=>{
 })
 
 window.addEventListener('click',(e)=>{
-  // e.preventDefault();
+   // e.preventDefault();
 
   if (e.target.id === 'addCategory') {
     createAddCategoryButton();
@@ -22,7 +22,9 @@ window.addEventListener('click',(e)=>{
     e.preventDefault();
     Category.createNewCategory(e);
   }
-  if (e.target.id === 'showAll') {
+  if (e.target.parentNode.className === 'dishCategory') {
   e.preventDefault();
-  console.log(e.target);}
+  console.log(e.target.parentNode);} // no action for now
+  //
+  // console.log(e.target.parentNode);
 })
