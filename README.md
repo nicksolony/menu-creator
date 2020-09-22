@@ -31,7 +31,6 @@ Things you may want to cover:
 
 ## Models
 * dish
-<<<<<<< HEAD
   * Name
   * Category
   * Description
@@ -42,7 +41,3 @@ Things you may want to cover:
 * category
   * Name
   * Dishes
-=======
-  ** Name
-  ** 
->>>>>>> 5e9402c73e265f260dd76583acecff482e776c7f
