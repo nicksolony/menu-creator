@@ -35,7 +35,7 @@ window.addEventListener('click',(e)=>{
     //    addedCategory.displayCategory();
     //  })
     const data = { name: newCategory };
-
+    form.parentNode.removeChild(form)
     fetch(`${BACKEND_URL}/categories`, {
       method: 'POST', // or 'PUT'
       headers: {
@@ -43,13 +43,16 @@ window.addEventListener('click',(e)=>{
       },
       body: JSON.stringify(data),
     })
-    .then(response => response.json())
+    .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
+  return response.json() })
     .then(data => {
+      console.log(data);
       const addedCategory = new Category(data.name, data.id);
       addedCategory.displayCategory();
     })
     .catch((error) => {
-      alert(error);
-    });
+      window.alert(error)
+    })
+
   }
 })
