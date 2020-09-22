@@ -12,6 +12,8 @@ window.addEventListener('DOMContentLoaded',(e)=>{
 })
 
 window.addEventListener('click',(e)=>{
+  // e.preventDefault();
+
   if (e.target.id === 'addCategory') {
     createAddCategoryButton();
   };
@@ -20,4 +22,7 @@ window.addEventListener('click',(e)=>{
     e.preventDefault();
     Category.createNewCategory(e);
   }
+  if (e.target.id === 'showAll') {
+  e.preventDefault();
+  console.log(e.target);}
 })
