@@ -12,12 +12,17 @@ class Category {
 
   displayCategory(category){
     let li = document.createElement('li')
-    li.className = 'dishCategory'
     li.id = this.id
     let link = document.createElement('a')
     link.setAttribute('href',`${BACKEND_URL}/categories/${this.id}`)
-    link.innerText=this.name
+    link.innerText=`${this.name} `
+    link.className = 'dishCategory'
     li.appendChild(link)
+    let deleteButton = document.createElement('button')
+    deleteButton.className = `deleteCategory`
+    deleteButton.id = this.id
+    deleteButton.innerText = 'x'
+    li.appendChild(deleteButton)
     categoriesList.appendChild(li);
   }
 

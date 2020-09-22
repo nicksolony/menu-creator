@@ -22,9 +22,12 @@ window.addEventListener('click',(e)=>{
     e.preventDefault();
     Category.createNewCategory(e);
   }
-  if (e.target.parentNode.className === 'dishCategory') {
+  if (e.target.className === 'dishCategory') {
   e.preventDefault();
-  console.log(e.target.parentNode);} // no action for now
-  //
-  // console.log(e.target.parentNode);
+  console.log(e.target.parentNode);} //this will show dishes from the category only
+
+  if (e.target.className === 'deleteCategory') {
+  e.preventDefault();
+  console.log(e.target)} // shold delete Category
+  
 })
