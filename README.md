@@ -22,3 +22,12 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## User Stories
+* A user is able to view dishes, add new dish, edit dish or delete dish
+* A user is able to view menus, create a new menu, edit a menu, or delete a menu
+* A user can view dishes on a menu, add a dish to a menu, delete a dish from the menu
+
+## Models
+* dish
+  * 
