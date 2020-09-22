@@ -20,22 +20,10 @@ window.addEventListener('click',(e)=>{
     e.preventDefault();
     const form = e.target.parentNode;
     const newCategory = form.newCategory.value;
-
-
-    // fetch(`${BACKEND_URL}/categories`),{
-    //   method: 'POST',
-    //    headers: {
-    //     'content-type': 'application/json'
-    //    },
-    //    body: JSON.stringify({name: newCategory})
-    //  }
-    //  .then(resp=>resp.json())
-    //  .then(data=>{
-    //    const addedCategory = new Category(data.name, data.id);
-    //    addedCategory.displayCategory();
-    //  })
     const data = { name: newCategory };
-    form.parentNode.removeChild(form)
+    // debugger
+    let row = form.parentNode
+    row.parentNode.removeChild(row)
     fetch(`${BACKEND_URL}/categories`, {
       method: 'POST', // or 'PUT'
       headers: {

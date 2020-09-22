@@ -11,13 +11,11 @@ class Category {
   }
 
   displayCategory(category){
-    let tr = document.createElement('tr')
-    let td = document.createElement('td')
-    td.className = 'dishCategory'
-    td.id = this.id
-    td.innerText=this.name
-    tr.appendChild(td)
-    dishTable.appendChild(tr);
+    let li = document.createElement('li')
+    li.className = 'dishCategory'
+    li.id = this.id
+    li.innerText=this.name
+    categoriesList.appendChild(li);
   }
 
 }

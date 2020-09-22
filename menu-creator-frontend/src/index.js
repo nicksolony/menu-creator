@@ -1,5 +1,5 @@
 const BACKEND_URL = 'http://localhost:3000'
-const dishTable = document.querySelector('#dishSelectionTable');
+const categoriesList = document.querySelector('#categoriesList');
 
 // function loadCategories() {
 //   Category.all_categories.forEach((item) => {
@@ -8,9 +8,9 @@ const dishTable = document.querySelector('#dishSelectionTable');
 //   });
 // };
 
-function createAddCategoryButton() {let tr = document.createElement('tr')
-let td = document.createElement('td')
-td.className = 'dishCategory'
+function createAddCategoryButton() {
+let li = document.createElement('li')
+li.className = 'dishCategory'
 const newCategoryForm = document.createElement('form')
 newCategoryForm.id = 'newCategoryForm'
 
@@ -27,6 +27,5 @@ formButton.id = 'AddCategoryButton'
 newCategoryForm.appendChild(input)
 newCategoryForm.appendChild(formButton)
 
-td.appendChild(newCategoryForm)
-tr.appendChild(td)
-dishTable.appendChild(tr)}
+li.appendChild(newCategoryForm)
+categoriesList.appendChild(li)}
