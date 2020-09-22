@@ -29,5 +29,8 @@ window.addEventListener('click',(e)=>{
   if (e.target.className === 'deleteCategory') {
   e.preventDefault();
   console.log(e.target)} // shold delete Category
-  
+
+  if (e.target.className === 'editCategory') {
+  e.preventDefault();
+  console.log(e.target)}
 })
