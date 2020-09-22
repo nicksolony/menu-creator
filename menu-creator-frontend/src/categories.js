@@ -15,9 +15,10 @@ class Category {
     let td = document.createElement('td')
     td.className = 'dishCategory'
     td.id = this.id
-    td.setAttribute('colspan',3)
     td.innerText=this.name
     tr.appendChild(td)
     dishTable.appendChild(tr);
   }
+
+
 }
