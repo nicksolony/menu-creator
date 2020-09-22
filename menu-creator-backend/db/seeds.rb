@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#   Seeding Categories
+Category.create(name:'Desserts');
+Category.create(name:'Appetizers');
+Category.create(name:'Entrees');
+Category.create(name:'Drinks');
