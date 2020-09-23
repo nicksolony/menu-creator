@@ -1,51 +1,51 @@
 class DishesController < ApplicationController
-  before_action :set_dish
+  before_action :set_dish, only: [:show, :update, :destroy]
 
-  # GET /categories
+  # GET /dishes
   def index
-    @categories = Category.all.order(:id)
+    @dishes = Dish.all.order(:id)
 
-    render json: @categories
+    render json: @dishes
   end
 
-  # GET /categories/1
+  # GET /dishes/1
   def show
-    render json: @category
+    render json: @dish
   end
 
-  # POST /categories
+  # POST /dishes
   def create
-    @category = Category.new(category_params)
+    @dish = Dish.new(dish_params)
 
-    if @category.save
-      render json: @category, status: :created, location: @category
+    if @dish.save
+      render json: @dish, status: :created, location: @dish
     else
-      render json: @category.errors.full_messages, status: :unprocessable_entity
+      render json: @dish.errors.full_messages, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /categories/1
+  # PATCH/PUT /dishes/1
   def update
-    if @category.update(category_params)
-      render json: @category
+    if @dish.update(dish_params)
+      render json: @dish
     else
-      render json: @category.errors.full_messages, status: :unprocessable_entity
+      render json: @dish.errors.full_messages, status: :unprocessable_entity
     end
   end
 
-  # DELETE /categories/1
+  # DELETE /dishes/1
   def destroy
-    @category.destroy
+    @dish.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dish
-      @category = Category.find(params[:id])
+      @dish = Dish.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
-    def category_params
-      params.require(:category).permit(:name)
+    def dish_params
+      params.require(:dish).permit(:name,:category_id,:description,:price)
     end
 end
