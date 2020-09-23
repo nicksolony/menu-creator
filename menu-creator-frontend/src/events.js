@@ -6,7 +6,8 @@ window.addEventListener('DOMContentLoaded',(e)=>{
       Category.all_categories=[]
       data.forEach((item) => {
           let newCategory = new Category(item.name,item.id)
-          newCategory.displayCategory()
+          let newRow = newCategory.displayCategory()
+          categoriesList.appendChild(newRow);
       });
     });
 })

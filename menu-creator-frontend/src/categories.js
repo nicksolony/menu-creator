@@ -35,7 +35,8 @@ class Category {
     li.appendChild(link)
     li.appendChild(editButton)
     li.appendChild(deleteButton)
-    categoriesList.appendChild(li);
+    return li;
+    // categoriesList.appendChild(li);
   }
 
   static createNewCategory(e) {
@@ -99,7 +100,8 @@ class Category {
 
   updateCategory(formData) {
     Category.all_categories[Category.all_categories.indexOf(this)].name = formData.editCategory.value
-
-    debugger
+    updateCategoryInDB(this.id,this.name)
+    let editField = document.querySelector(`#category_${this.id}`)
+    editField.parentNode.replaceChild(this.displayCategory(), editField);
   }
 }

@@ -33,3 +33,23 @@ function deleteCategoryFromDb(id) {
     })
     .then(res => window.alert(res));
 }
+
+function updateCategoryInDB(id,name) {
+    fetch(`${CATEGORIES_URL}/${id}`, {
+      method: 'PUT', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({name: name}),
+    })
+    .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
+    return response.json() })
+    .then(data => {
+      console.log(data);
+      const addedCategory = new Category(data.name, data.id);
+      addedCategory.displayCategory();
+    })
+    .catch((error) => {
+      window.alert(error)
+    })
+  }
