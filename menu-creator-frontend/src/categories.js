@@ -99,7 +99,6 @@ class Category {
   }
 
   updateCategory(formData) {
-    // debugger
-    updateCategoryInDB(this.id,this.name)
+    updateCategoryInDB(this.id,formData.editCategory.value)
   }
 }
