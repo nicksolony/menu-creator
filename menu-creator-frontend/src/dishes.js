@@ -26,7 +26,7 @@ class Dish {
 
     let categoryLink = document.createElement('a')
     categoryLink.setAttribute('href',`${CATEGORIES_URL}/${this.category_id}`)
-    categoryLink.innerText=`[${Category.findCategory('id',this.category_id).name}]`
+    categoryLink.innerText=`${Category.findCategory('id',this.category_id).name}`
     categoryLink.className = 'dishCategoryLink'
 
 
