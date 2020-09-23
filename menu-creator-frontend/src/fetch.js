@@ -1,4 +1,4 @@
-function createNewCategory(data) {
+function createNewCategoryInDB(data) {
   fetch(`${CATEGORIES_URL}`, {
     method: 'POST', // or 'PUT'
     headers: {
@@ -9,9 +9,9 @@ function createNewCategory(data) {
   .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
   return response.json() })
   .then(data => {
-    console.log(data);
     const addedCategory = new Category(data.name, data.id);
-    addedCategory.displayCategory();
+    let newRow = addedCategory.displayCategory();
+    categoriesList.appendChild(newRow);
   })
   .catch((error) => {
     window.alert(error)
@@ -45,9 +45,11 @@ function updateCategoryInDB(id,name) {
     .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
     return response.json() })
     .then(data => {
-      console.log(data);
-      const addedCategory = new Category(data.name, data.id);
-      addedCategory.displayCategory();
+      let editField = document.querySelector(`#category_${id}`)
+      let editedCategory = Category.findCategory('id',id)
+      Category.all_categories[Category.all_categories.indexOf(editedCategory
+)].name = name
+      editField.parentNode.replaceChild(editedCategory.displayCategory(), editField);
     })
     .catch((error) => {
       window.alert(error)

@@ -46,7 +46,7 @@ class Category {
     // debugger
     let row = form.parentNode
     row.parentNode.removeChild(row)
-    createNewCategory(data)
+    createNewCategoryInDB(data)
   //   fetch(`${BACKEND_URL}/categories`, {
   //     method: 'POST', // or 'PUT'
   //     headers: {
@@ -99,9 +99,7 @@ class Category {
   }
 
   updateCategory(formData) {
-    Category.all_categories[Category.all_categories.indexOf(this)].name = formData.editCategory.value
+    // debugger
     updateCategoryInDB(this.id,this.name)
-    let editField = document.querySelector(`#category_${this.id}`)
-    editField.parentNode.replaceChild(this.displayCategory(), editField);
   }
 }
