@@ -13,7 +13,7 @@
       <th>Dishes<br>
       <button type="button" id="addDish">Add New Dish</button></th>
     </thead>
-    <tr>
+    <tr valign="top">
       <td>
           <ul id='categoriesList'>
             <li id='showAll'><a href="" class='dishCategory'>Show All</a></li>
@@ -23,14 +23,40 @@
           <ul id='dishesList'>
           </ul>
       </td>
+      <td>
+        <div id="newDishForm">
+          <h3>Add new dish</h3>
+          <form class="addDishForm">
+            <table>
+              <tr>
+                <td><label for="name">Dish Name: </label></td>
+                <td><input type="text" name="name" value="" placeholder="add new dish name here"></td>
+              </tr>
+              <tr>
+                <td><textarea name="description" placeholder="describe new dish" cols="25" rows="5"></textarea></td>
+                <td><label for="description">Description:</label></td>
+              </tr>
+              <tr>
+                <td><label for="price">Price: $</label></td>
+                <td><input type="number" name="price" value=""></td>
+              </tr>
+            </table>
+
+
+
+
+
+          </form>
+        </div>
+      </td>
 
     </tr>
   </table>
+  <script type="application/javascript" src="src/fetch.js" charset="UTF-8"></script>
+  <script type="application/javascript" src="src/categories.js" charset="UTF-8"></script>
+  <script type="application/javascript" src="src/dishes.js" charset="UTF-8"></script>
+  <script type="application/javascript" src="src/events.js" charset="UTF-8"></script>
+  <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
 
-    <script type="application/javascript" src="src/fetch.js" charset="UTF-8"></script>
-    <script type="application/javascript" src="src/categories.js" charset="UTF-8"></script>
-    <script type="application/javascript" src="src/dishes.js" charset="UTF-8"></script>
-    <script type="application/javascript" src="src/events.js" charset="UTF-8"></script>
-    <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
     </body>
 </html>

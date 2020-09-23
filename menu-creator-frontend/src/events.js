@@ -8,7 +8,7 @@ window.addEventListener('click',(e)=>{
    // e.preventDefault();
 
   if (e.target.id === 'addCategory') {
-    createAddCategoryButton();
+    showAddCategoryForm();
   };
 
   if (e.target.className === 'dishCategory') {
@@ -26,6 +26,12 @@ window.addEventListener('click',(e)=>{
   let category = Category.findCategory('id',parseInt(e.target.id,10))
   category.editCategory()
   }
+
+  if (e.target.id === 'addDish') {
+    showAddDishForm();
+
+  };
+
 })
 
 window.addEventListener('submit',(e)=>{
