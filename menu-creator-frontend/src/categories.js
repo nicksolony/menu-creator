@@ -14,7 +14,7 @@ class Category {
   displayCategory(category){
     let li = document.createElement('li')
     li.className = 'categoryItem'
-    li.id = this.id
+    li.id = `category_${this.id}`
 
     let link = document.createElement('a')
     link.setAttribute('href',`${BACKEND_URL}/categories/${this.id}`)
@@ -68,5 +68,7 @@ class Category {
   static deleteCategory(category){
     this.all_categories= this.all_categories.filter(element=>element.id != category.id)
     deleteCategoryFromDb(category.id) //remove value from DB
+    let deletedCategory = document.querySelector(`#category_${category.id}`)
+    categoriesList.removeChild(deletedCategory)
   }
 }
