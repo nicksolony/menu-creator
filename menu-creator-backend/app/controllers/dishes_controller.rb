@@ -5,7 +5,7 @@ class DishesController < ApplicationController
   def index
     @dishes = Dish.all.order(:id)
 
-    render json: @dishes
+    render json: @dishes, include: :category
   end
 
   # GET /dishes/1

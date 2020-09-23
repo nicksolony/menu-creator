@@ -1,15 +1,7 @@
 
 window.addEventListener('DOMContentLoaded',(e)=>{
-  fetch (`${BACKEND_URL}/categories`)
-    .then (resp=>resp.json())
-    .then (data=> {
-      Category.all_categories=[]
-      data.forEach((item) => {
-          let newCategory = new Category(item.name,item.id)
-          let newRow = newCategory.displayCategory()
-          categoriesList.appendChild(newRow);
-      });
-    });
+  loadCategories()
+  loadDishes()
 })
 
 window.addEventListener('click',(e)=>{

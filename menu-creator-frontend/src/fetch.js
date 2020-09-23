@@ -1,3 +1,29 @@
+function loadCategories() {
+  fetch (`${CATEGORIES_URL}`)
+    .then (resp=>resp.json())
+    .then (data=> {
+      Category.all_categories=[]
+      data.forEach((item) => {
+          let newCategory = new Category(item.name,item.id)
+          let newRow = newCategory.displayCategory()
+          categoriesList.appendChild(newRow);
+      });
+    });
+}
+
+function loadDishes() {
+  fetch (`${DISHES_URL}`)
+    .then (resp=>resp.json())
+    .then (data=> {
+      Dish.all_dishes=[]
+      data.forEach((item) => {
+          let newDish = new Dish(item.name,item.category_id,item.description,item.price, item.category_id)
+          let newRow = newDish.displayDish()
+          dishesList.appendChild(newRow);
+      });
+    });
+}
+
 function createNewCategoryInDB(data) {
   fetch(`${CATEGORIES_URL}`, {
     method: 'POST', // or 'PUT'

@@ -1,5 +1,6 @@
 const BACKEND_URL = 'http://localhost:3000'
 const CATEGORIES_URL = BACKEND_URL+'/categories'
+const DISHES_URL = BACKEND_URL+'/dishes'
 const categoriesList = document.querySelector('#categoriesList');
 
 // function loadCategories() {

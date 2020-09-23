@@ -1,9 +1,12 @@
 class Dish {
   static all_dishes = []
 
-  constructor(name, id) {
+  constructor(name, id, description,price,category_id) {
     this.name = name;
     this.id = id;
+    this.description=description;
+    this.price=price;
+    this.category_id=category_id
     Dish.all_dishes.push(this)
   }
 
@@ -17,9 +20,14 @@ class Dish {
     li.id = `dish_${this.id}`
 
     let link = document.createElement('a')
-    link.setAttribute('href',`${BACKEND_URL}/dishes/${this.id}`)
+    link.setAttribute('href',`${DISHES_URL}/${this.id}`)
     link.innerText=`${this.name} `
-    link.className = 'dishDish'
+    link.className = 'dishLink'
+
+    let categoryLink = document.createElement('a')
+    categoryLink.setAttribute('href',`${CATEGORIES_URL}/${this.category_id}`)
+    categoryLink.innerText=`[${Category.findCategory('id',this.category_id).name}]`
+    categoryLink.className = 'dishCategoryLink'
 
 
     let deleteButton = document.createElement('button')
@@ -33,6 +41,7 @@ class Dish {
     editButton.innerText = '✎'
 
     li.appendChild(link)
+    li.appendChild(categoryLink)
     li.appendChild(editButton)
     li.appendChild(deleteButton)
     return li;
