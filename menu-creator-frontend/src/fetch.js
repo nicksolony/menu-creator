@@ -42,7 +42,7 @@ function updateCategoryInDB(id,name) {
       },
       body: JSON.stringify({name: name}),
     })
-    .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
+    .then(response => { if (!response.ok) {return response.json().then (data=> { console.log(error); throw data}) }
     return response.json() })
     .then(data => {
       let editField = document.querySelector(`#category_${id}`)

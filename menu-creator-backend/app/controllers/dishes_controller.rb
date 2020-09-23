@@ -1,5 +1,5 @@
-class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :update, :destroy]
+class DishesController < ApplicationController
+  before_action :set_dish
 
   # GET /categories
   def index
@@ -40,7 +40,7 @@ class CategoriesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_category
+    def set_dish
       @category = Category.find(params[:id])
     end
 

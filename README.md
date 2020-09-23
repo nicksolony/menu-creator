@@ -35,14 +35,16 @@ Things you may want to cover:
   * Category (belongs to)
   * Description
   * Price
-  * menus (has many)
+  * menus (has many through menu_dishes)
+  * menu_dishes (has many)
 * menu
   * Name
-  * Dishes (has many)
+  * Dishes (has many through menu_dishes)
+  * menu_dishes (has many)
   * categories through dishes (has many through)
 * category
   * Name
   * Dishes (has many)
 * menu_dish
-  * menus
-  * dishes
+  * menus (belongs_to)
+  * dishes (belongs_to)
