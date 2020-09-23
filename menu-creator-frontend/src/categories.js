@@ -11,7 +11,7 @@ class Category {
     return (this.all_categories.find(element=>{return element[key]===value}))
   }
 
-  displayCategory(category){
+  displayCategory(){
     let li = document.createElement('li')
     li.className = 'categoryItem'
     li.id = `category_${this.id}`
@@ -65,10 +65,10 @@ class Category {
   //   })
   }
 
-  static deleteCategory(category){
-    this.all_categories= this.all_categories.filter(element=>element.id != category.id)
-    deleteCategoryFromDb(category.id) //remove value from DB
-    let deletedCategory = document.querySelector(`#category_${category.id}`)
+  deleteCategory(){
+    Category.all_categories= Category.all_categories.filter(element=>element.id != this.id)
+    deleteCategoryFromDb(this.id) //remove value from DB
+    let deletedCategory = document.querySelector(`#category_${this.id}`)
     categoriesList.removeChild(deletedCategory)
   }
 
@@ -95,5 +95,11 @@ class Category {
     // deleteCategoryFromDb(category.id)
     // let deletedCategory = document.querySelector(`#category_${category.id}`)
     // categoriesList.removeChild(deletedCategory)
+  }
+
+  updateCategory(formData) {
+    Category.all_categories[Category.all_categories.indexOf(this)].name = formData.editCategory.value
+
+    debugger
   }
 }
