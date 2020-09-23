@@ -1,5 +1,5 @@
 function createNewCategory(data) {
-  fetch(`${BACKEND_URL}/categories`, {
+  fetch(`${CATEGORIES_URL}`, {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
@@ -16,4 +16,20 @@ function createNewCategory(data) {
   .catch((error) => {
     window.alert(error)
   })
+}
+
+function deleteCategoryFromDb(id) {
+  fetch(`${CATEGORIES_URL}/${id}`,{
+      method: 'DELETE',
+      headers: {
+    'Content-Type': 'application/json'
+  }})
+    .then(res => {
+        if (res.ok) {
+            return Promise.resolve('Category Deleted.');
+        } else {
+            return Promise.reject('An error occurred.');
+        }
+    })
+    .then(res => window.alert(res));
 }

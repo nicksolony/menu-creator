@@ -65,4 +65,8 @@ class Category {
   //   })
   }
 
+  static deleteCategory(category){
+    this.all_categories= this.all_categories.filter(element=>element.id != category.id)
+    deleteCategoryFromDb(category.id) //remove value from DB
+  }
 }
