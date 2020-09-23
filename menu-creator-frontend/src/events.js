@@ -18,10 +18,6 @@ window.addEventListener('click',(e)=>{
     createAddCategoryButton();
   };
 
-  if (e.target.id === 'AddCategoryButton') {
-    e.preventDefault();
-    Category.createNewCategory(e);
-  }
   if (e.target.className === 'dishCategory') {
   e.preventDefault();
   console.log(e.target.parentNode);} //this will show dishes from the category only
@@ -34,5 +30,14 @@ window.addEventListener('click',(e)=>{
 
   if (e.target.className === 'editCategory') {
   e.preventDefault();
-  console.log(e.target)} // should be editing  category
+  let category = Category.findCategory('id',parseInt(e.target.id,10))
+  category.editCategory()
+  }
+})
+
+window.addEventListener('submit',(e)=>{
+  if (e.target.id === 'newCategoryForm') {
+    e.preventDefault();
+    Category.createNewCategory(e);
+  }
 })

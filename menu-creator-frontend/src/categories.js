@@ -39,7 +39,7 @@ class Category {
   }
 
   static createNewCategory(e) {
-    const form = e.target.parentNode;
+    const form = e.target;
     const newCategory = form.newCategory.value;
     const data = { name: newCategory };
     // debugger
@@ -70,5 +70,30 @@ class Category {
     deleteCategoryFromDb(category.id) //remove value from DB
     let deletedCategory = document.querySelector(`#category_${category.id}`)
     categoriesList.removeChild(deletedCategory)
+  }
+
+  editCategory(){
+    let editField = document.querySelector(`#category_${this.id}`)
+    const editCategoryForm = document.createElement('form')
+    editCategoryForm.id = 'editCategoryForm'
+
+    const input = document.createElement('input')
+    input.name = 'editCategory'
+    input.value=`${this.name}`
+
+    const formButton=document.createElement('input')
+    formButton.type = 'submit'
+    formButton.value = '✔'
+    formButton.id = 'UpdateCategoryButton'
+    editCategoryForm.appendChild(input)
+    editCategoryForm.appendChild(formButton)
+    editField.children[2].remove()
+    editField.children[1].remove()
+    editField.children[0].replaceWith(editCategoryForm)
+        // console.log(editField);
+
+    // deleteCategoryFromDb(category.id)
+    // let deletedCategory = document.querySelector(`#category_${category.id}`)
+    // categoriesList.removeChild(deletedCategory)
   }
 }
