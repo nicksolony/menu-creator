@@ -29,9 +29,7 @@ window.addEventListener('click',(e)=>{
 
   if (e.target.id === 'addDish') {
     showAddDishForm();
-
   };
-
 })
 
 window.addEventListener('submit',(e)=>{

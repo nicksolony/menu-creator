@@ -4,6 +4,19 @@ const DISHES_URL = BACKEND_URL+'/dishes'
 const categoriesList = document.querySelector('#categoriesList');
 const addDishForm = document.querySelector('#newDishForm');
 
+function populateDynamicCategoryList() {
+  let dropDown = document.querySelector('#dynamicDropdown')
+  while (dropDown.firstChild) {
+       dropDown.removeChild(dropDown.firstChild);
+   };
+  Category.all_categories.forEach((item) => {
+    let option = document.createElement('option')
+    option.value = item.id
+    option.innerText=item.name
+    dropDown.appendChild(option)
+  });
+
+}
 
 // function loadCategories() {
 //   Category.all_categories.forEach((item) => {
@@ -39,6 +52,7 @@ function showAddCategoryForm()
 function showAddDishForm()
   {
     addDishForm.style.display='block'
+    populateDynamicCategoryList()
   }
 //   let li = document.createElement('li')
 //   li.className = 'dishCategory'

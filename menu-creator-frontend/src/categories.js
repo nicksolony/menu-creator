@@ -71,6 +71,7 @@ class Category {
     deleteCategoryFromDb(this.id) //remove value from DB
     let deletedCategory = document.querySelector(`#category_${this.id}`)
     categoriesList.removeChild(deletedCategory)
+    populateDynamicCategoryList();
   }
 
   editCategory(){
@@ -99,6 +100,7 @@ class Category {
   }
 
   updateCategory(formData) {
+    populateDynamicCategoryList();
     updateCategoryInDB(this.id,formData.editCategory.value)
   }
 }

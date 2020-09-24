@@ -33,12 +33,19 @@
                 <td><input type="text" name="name" value="" placeholder="add new dish name here"></td>
               </tr>
               <tr>
-                <td><textarea name="description" placeholder="describe new dish" cols="25" rows="5"></textarea></td>
                 <td><label for="description">Description:</label></td>
+                <td><textarea name="description" placeholder="describe new dish" cols="25" rows="5"></textarea></td>
               </tr>
               <tr>
-                <td><label for="price">Price: $</label></td>
+                <td><label for="price">Price:</label></td>
                 <td><input type="number" name="price" value=""></td>
+              </tr>
+              <tr>
+                <td><label for="Category">Category:</label></td>
+                <td id ='dynamic dropdown'>
+                  <select id ='dynamicDropdown' name="category">
+                  </select>
+                </td>
               </tr>
             </table>
 

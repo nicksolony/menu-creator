@@ -38,6 +38,7 @@ function createNewCategoryInDB(data) {
     const addedCategory = new Category(data.name, data.id);
     let newRow = addedCategory.displayCategory();
     categoriesList.appendChild(newRow);
+    populateDynamicCategoryList();
   })
   .catch((error) => {
     window.alert(error)
@@ -76,6 +77,7 @@ function updateCategoryInDB(id,name) {
       Category.all_categories[Category.all_categories.indexOf(editedCategory
 )].name = name
       editField.parentNode.replaceChild(editedCategory.displayCategory(), editField);
+      populateDynamicCategoryList();
     })
     .catch((error) => {
       window.alert(error)
