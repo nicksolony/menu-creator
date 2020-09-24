@@ -9,7 +9,19 @@ function populateDynamicCategoryList() {
   while (dropDown.firstChild) {
        dropDown.removeChild(dropDown.firstChild);
    };
-  Category.all_categories.forEach((item) => {
+let allCategories = Category.all_categories.sort(function(a, b) {
+  var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+  var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+  return 0;
+});
+
+  allCategories.forEach((item) => {
     let option = document.createElement('option')
     option.value = item.id
     option.innerText=item.name

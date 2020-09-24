@@ -3,7 +3,7 @@ class DishesController < ApplicationController
 
   # GET /dishes
   def index
-    @dishes = Dish.all.order(:id)
+    @dishes = Dish.all.order(:name)
 
     render json: @dishes, include: :category
   end
