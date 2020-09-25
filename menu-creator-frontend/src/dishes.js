@@ -24,10 +24,10 @@ class Dish {
     link.innerText=`${this.name} `
     link.className = 'dishLink'
 
-    let categoryLink = document.createElement('a')
-    categoryLink.setAttribute('href',`${CATEGORIES_URL}/${this.category_id}`)
-    categoryLink.innerText=`${Category.findCategory('id',this.category_id).name}`
-    categoryLink.className = 'dishCategoryLink'
+    // let categoryLink = document.createElement('a')
+    // categoryLink.setAttribute('href',`${CATEGORIES_URL}/${this.category_id}`)
+    // categoryLink.innerText=`${Category.findCategory('id',this.category_id).name}`
+    // categoryLink.className = 'dishCategoryLink'
 
 
     let deleteButton = document.createElement('button')
@@ -41,7 +41,7 @@ class Dish {
     editButton.innerText = '✎'
 
     li.appendChild(link)
-    li.appendChild(categoryLink)
+    // li.appendChild(categoryLink)
     li.appendChild(editButton)
     li.appendChild(deleteButton)
     return li;

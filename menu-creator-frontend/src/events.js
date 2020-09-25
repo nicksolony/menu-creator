@@ -31,6 +31,10 @@ window.addEventListener('click',(e)=>{
   if (e.target.id === 'addDish') {
     showAddDishForm();
   };
+
+  if (e.target.id === 'hideDish') {
+    hideAddDishForm();
+  };
 })
 
 window.addEventListener('submit',(e)=>{
@@ -40,6 +44,7 @@ window.addEventListener('submit',(e)=>{
   }
 
   if (e.target.id === 'editCategoryForm') {
+    console.log('test');
     let editedCategory = Category.findCategory('id',parseInt(e.target.parentNode.id.split('category_')[1],10))
     editedCategory.updateCategory(e.target);
   }
