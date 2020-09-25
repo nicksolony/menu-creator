@@ -21,6 +21,9 @@ table.dishTable td.dishCategory{
 
 }
 
+.deleted {
+  color: red;
+}
 
 a.dishCategoryLink {
   font: bold 11px Arial;

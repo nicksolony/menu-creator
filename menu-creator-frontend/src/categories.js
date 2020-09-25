@@ -66,13 +66,8 @@ class Category {
   //   })
   }
 
-  deleteCategory(){
-    Category.all_categories= Category.all_categories.filter(element=>element.id != this.id)
-    deleteCategoryFromDb(this.id) //remove value from DB
-    let deletedCategory = document.querySelector(`#category_${this.id}`)
-    categoriesList.removeChild(deletedCategory)
-    populateDynamicCategoryList();
-  }
+
+
 
   editCategory(){
     let editField = document.querySelector(`#category_${this.id}`)

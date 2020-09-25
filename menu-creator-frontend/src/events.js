@@ -17,8 +17,9 @@ window.addEventListener('click',(e)=>{
 
   if (e.target.className === 'deleteCategory') {
   e.preventDefault();
-  let category = Category.findCategory('id',parseInt(e.target.id,10))
-  category.deleteCategory()
+  deleteCategoryFromDb(e.target.id)
+  // let category = Category.findCategory('id',parseInt(e.target.id,10))
+  // category.deleteCategory()
   } // shold delete Category
 
   if (e.target.className === 'editCategory') {

@@ -70,4 +70,23 @@ function showAddDishForm()
 function hideAddDishForm()
   {
     addDishForm.style.display='none'
+    document.querySelector('#newDishName').value=''
+    document.querySelector('#newDishDescription').value=''
+    document.querySelector('#newDishPrice').value=''
   }
+
+function removeCategory(id,res){
+  if (res==='Category Deleted.') {
+    Category.all_categories= Category.all_categories.filter(element=>element.id != id)
+    let deletedCategory = document.querySelector(`#category_${id}`)
+    deletedCategory.innerText=res;
+    deletedCategory.className = 'deleted'
+    // debugger
+    setTimeout(function () {
+    categoriesList.removeChild(deletedCategory)
+  },2000)
+    populateDynamicCategoryList();
+  } else {
+    window.alert(res);
+  }
+}

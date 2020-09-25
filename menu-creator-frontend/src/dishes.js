@@ -55,7 +55,6 @@ class Dish {
     const newDishPrice = form.price.value;
     const newDishCategory = form.category.value;
     const data = { name: newDishName, description: newDishDescription, price: newDishPrice, category_id: newDishCategory };
-    hideAddDishForm();
     createNewDishInDB(data)
   //   fetch(`${BACKEND_URL}/dishes`, {
   //     method: 'POST', // or 'PUT'

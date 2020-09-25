@@ -55,10 +55,10 @@ function deleteCategoryFromDb(id) {
         if (res.ok) {
             return Promise.resolve('Category Deleted.');
         } else {
-            return Promise.reject('An error occurred.');
+            return Promise.resolve("Can't delete category.");
         }
     })
-    .then(res => window.alert(res));
+    .then(res => removeCategory(id,res));
 }
 
 function updateCategoryInDB(id,name) {
@@ -98,7 +98,7 @@ function createNewDishInDB(data) {
     const addedDish = new Dish(data.name, data.id, data.description, data.price, data.category_id);
     let newRow = addedDish.displayDish();
     dishesList.appendChild(newRow);
-    // populateDynamicCategoryList();
+    hideAddDishForm();
   })
   .catch((error) => {
     window.alert(error)
