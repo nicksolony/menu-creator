@@ -12,18 +12,18 @@ window.addEventListener('click',(e)=>{
   };
 
   if (e.target.className === 'dishCategory') {
-  e.preventDefault();
+  // e.preventDefault();
   console.log(e.target.parentNode);} //this will show dishes from the category only
 
   if (e.target.className === 'deleteCategory') {
-  e.preventDefault();
+  // e.preventDefault();
   deleteCategoryFromDb(e.target.id)
   // let category = Category.findCategory('id',parseInt(e.target.id,10))
   // category.deleteCategory()
   } // shold delete Category
 
   if (e.target.className === 'editCategory') {
-  e.preventDefault();
+  // e.preventDefault();
   let category = Category.findCategory('id',parseInt(e.target.id,10))
   category.editCategory()
   }
