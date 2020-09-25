@@ -17,7 +17,7 @@ function loadDishes() {
     .then (data=> {
       Dish.all_dishes=[]
       data.forEach((item) => {
-          let newDish = new Dish(item.name,item.category_id,item.description,item.price, item.category_id)
+          let newDish = new Dish(item.name,item.id,item.description,item.price, item.category_id)
           let newRow = newDish.displayDish()
           dishesList.appendChild(newRow);
       });
@@ -103,4 +103,20 @@ function createNewDishInDB(data) {
   .catch((error) => {
     window.alert(error)
   })
+}
+
+function deleteItemFromDb(id) {
+  fetch(`${DISHES_URL}/${id}`,{
+      method: 'DELETE',
+      headers: {
+    'Content-Type': 'application/json'
+  }})
+    .then(res => {
+        if (res.ok) {
+            return Promise.resolve('Item Deleted.');
+        } else {
+            return Promise.resolve("Can't delete item.");
+        }
+    })
+    .then(res => removeItem(id,res));
 }

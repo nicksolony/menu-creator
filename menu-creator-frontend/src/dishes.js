@@ -31,7 +31,7 @@ class Dish {
 
 
     let deleteButton = document.createElement('button')
-    deleteButton.className = `deleteDish`
+    deleteButton.className = `deleteItem`
     deleteButton.id = this.id
     deleteButton.innerText = '✘'
 
@@ -75,9 +75,9 @@ class Dish {
   //   })
   }
 
-  deleteDish(){
+  deleteItem(){
     Dish.all_dishes= Dish.all_dishes.filter(element=>element.id != this.id)
-    deleteDishFromDb(this.id) //remove value from DB
+    deleteItemFromDb(this.id) //remove value from DB
     let deletedDish = document.querySelector(`#dish_${this.id}`)
     dishesList.removeChild(deletedDish)
   }
@@ -102,7 +102,7 @@ class Dish {
     editField.children[0].replaceWith(editDishForm)
         // console.log(editField);
 
-    // deleteDishFromDb(dish.id)
+    // deleteItemFromDb(dish.id)
     // let deletedDish = document.querySelector(`#dish_${dish.id}`)
     // dishesList.removeChild(deletedDish)
   }

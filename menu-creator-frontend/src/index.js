@@ -90,3 +90,18 @@ function removeCategory(id,res){
     window.alert(res);
   }
 }
+
+function removeItem(id,res){
+  if (res==='Item Deleted.') {
+    Dish.all_dishes= Dish.all_dishes.filter(element=>element.id != id)
+    let deletedItem = document.querySelector(`#dish_${id}`)
+    deletedItem.innerText=res;
+    deletedItem.className = 'deleted'
+    // debugger
+    setTimeout(function () {
+    dishesList.removeChild(deletedItem)
+  },2000)
+  } else {
+    window.alert(res);
+  }
+}

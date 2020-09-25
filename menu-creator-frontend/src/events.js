@@ -32,9 +32,17 @@ window.addEventListener('click',(e)=>{
     showAddDishForm();
   };
 
-  if (e.target.id === 'hideDish') {
+  if (e.target.id === 'hideDishForm') {
     hideAddDishForm();
   };
+
+  if (e.target.className === 'deleteItem') {
+  // e.preventDefault();
+  deleteItemFromDb(e.target.id)
+  // let category = Category.findCategory('id',parseInt(e.target.id,10))
+  // category.deleteCategory()
+  }
+
 })
 
 window.addEventListener('submit',(e)=>{
@@ -44,13 +52,11 @@ window.addEventListener('submit',(e)=>{
   }
 
   if (e.target.id === 'editCategoryForm') {
-    console.log('test');
     let editedCategory = Category.findCategory('id',parseInt(e.target.parentNode.id.split('category_')[1],10))
     editedCategory.updateCategory(e.target);
   }
 
   if (e.target.id === 'addDishForm') {
-    console.log('new dish should be created');
     Dish.createNewDish(e.target)
   }
 })
