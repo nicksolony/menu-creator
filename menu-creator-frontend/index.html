@@ -9,9 +9,9 @@
   <table>
     <thead>
       <th>Categories<br>
-      <button type="button" id="addCategory">Add New Category</button></th>
+      <button type="button" id="addCategory">New Category</button></th>
       <th>Dishes<br>
-      <button type="button" id="addDish">Add New Dish</button><button type="button" id="hideDish">Hide New Dish Form</button></th>
+      <button type="button" id="addDish">New Item</button><button type="button" id="hideDish">Hide Form</button></th>
     </thead>
     <tr valign="top">
       <td>
@@ -20,16 +20,12 @@
           </ul>
       </td>
       <td>
-          <ul id='dishesList'>
-          </ul>
-      </td>
-      <td>
         <div id="newDishForm">
-          <h3>Add new dish</h3>
+            <h3 style="text-align:center;">New dish form</h3>
           <form id="addDishForm">
             <table>
               <tr>
-                <td><label for="name">Dish Name: </label></td>
+                <td><label for="name">Item Name: </label></td>
                 <td><input id ='newDishName' type="text" name="name" value="" placeholder="add new dish name here"></td>
               </tr>
               <tr>
@@ -48,7 +44,7 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2"><input type="submit" value="Add new dish"></td>
+                <td style="text-align:center;" colspan="2"><input type="submit" value="ADD"></td>
               </tr>
             </table>
 
@@ -58,6 +54,10 @@
 
           </form>
         </div>
+          <ul id='dishesList'>
+          </ul>
+      </td>
+      <td>
 
       </td>
 

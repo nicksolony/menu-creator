@@ -52,7 +52,7 @@ function showAddCategoryForm()
 
   const formButton=document.createElement('input')
   formButton.type = 'submit'
-  formButton.value = 'Add Category'
+  formButton.value = 'ADD'
   formButton.id = 'AddCategoryButton'
   newCategoryForm.appendChild(input)
   newCategoryForm.appendChild(formButton)
