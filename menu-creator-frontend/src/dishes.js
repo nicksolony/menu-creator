@@ -48,13 +48,14 @@ class Dish {
     // dishesList.appendChild(li);
   }
 
-  static createNewDish(e) {
-    const form = e.target;
-    const newDish = form.newDish.value;
-    const data = { name: newDish };
-    // debugger
-    let row = form.parentNode
-    row.parentNode.removeChild(row)
+  static createNewDish(form) {
+    // const form = e.target;
+    const newDishName = form.name.value;
+    const newDishDescription = form.description.value;
+    const newDishPrice = form.price.value;
+    const newDishCategory = form.category.value;
+    const data = { name: newDishName, description: newDishDescription, price: newDishPrice, category_id: newDishCategory };
+    hideAddDishForm();
     createNewDishInDB(data)
   //   fetch(`${BACKEND_URL}/dishes`, {
   //     method: 'POST', // or 'PUT'

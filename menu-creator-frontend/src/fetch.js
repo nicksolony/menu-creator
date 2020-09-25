@@ -83,3 +83,24 @@ function updateCategoryInDB(id,name) {
       window.alert(error)
     })
   }
+
+function createNewDishInDB(data) {
+  fetch(`${DISHES_URL}`, {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+  .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
+  return response.json() })
+  .then(data => {
+    const addedDish = new Dish(data.name, data.id, data.description, data.price, data.category_id);
+    let newRow = addedDish.displayDish();
+    dishesList.appendChild(newRow);
+    // populateDynamicCategoryList();
+  })
+  .catch((error) => {
+    window.alert(error)
+  })
+}

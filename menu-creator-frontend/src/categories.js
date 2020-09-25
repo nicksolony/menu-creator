@@ -39,8 +39,8 @@ class Category {
     // categoriesList.appendChild(li);
   }
 
-  static createNewCategory(e) {
-    const form = e.target;
+  static createNewCategory(form) {
+    // const form = e.target;
     const newCategory = form.newCategory.value;
     const data = { name: newCategory };
     // debugger

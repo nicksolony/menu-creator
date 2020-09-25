@@ -33,14 +33,18 @@ window.addEventListener('click',(e)=>{
 })
 
 window.addEventListener('submit',(e)=>{
+  e.preventDefault();
   if (e.target.id === 'newCategoryForm') {
-    e.preventDefault();
-    Category.createNewCategory(e);
+    Category.createNewCategory(e.target);
   }
 
   if (e.target.id === 'editCategoryForm') {
-    e.preventDefault();
     let editedCategory = Category.findCategory('id',parseInt(e.target.parentNode.id.split('category_')[1],10))
     editedCategory.updateCategory(e.target);
+  }
+
+  if (e.target.id === 'addDishForm') {
+    console.log('new dish should be created');
+    Dish.createNewDish(e.target)
   }
 })
