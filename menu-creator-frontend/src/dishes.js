@@ -106,7 +106,13 @@ class Dish {
     let categoryUl = document.getElementById(`#category${this.category_id}Group`).children[0]
     setTimeout(function () {
     categoryUl.removeChild(deletedItem)
-  },2000)
+    if (categoryUl.childElementCount === 0) {
+      let removedCategory = categoryUl.parentNode
+      removedCategory.parentNode.removeChild(removedCategory)
+    }
+  },1000);
+
+
   } else {
     window.alert(res);
   }
