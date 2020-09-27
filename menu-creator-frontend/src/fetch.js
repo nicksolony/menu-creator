@@ -19,7 +19,10 @@ function loadDishes() {
       data.forEach((item) => {
           let newDish = new Dish(item.name,item.id,item.description,item.price, item.category_id)
           let newRow = newDish.displayDish()
-          dishesList.appendChild(newRow);
+          // dishesList.appendChild(newRow);
+          let itemCategory = newDish.findOrCreateItemCategory();
+          itemCategory.appendChild(newRow);
+
       });
     });
 }
@@ -96,8 +99,9 @@ function createNewDishInDB(data) {
   return response.json() })
   .then(data => {
     const addedDish = new Dish(data.name, data.id, data.description, data.price, data.category_id);
+    let itemCategory = addedDish.findOrCreateItemCategory();
     let newRow = addedDish.displayDish();
-    dishesList.appendChild(newRow);
+    itemCategory.appendChild(newRow);
     hideAddDishForm();
   })
   .catch((error) => {
@@ -118,5 +122,8 @@ function deleteItemFromDb(id) {
             return Promise.resolve("Can't delete item.");
         }
     })
-    .then(res => removeItem(id,res));
+    .then(res => {
+      let deletedItem = Dish.findDish('id',parseInt(id,10))
+      deletedItem.removeItem(res)
+    });
 }

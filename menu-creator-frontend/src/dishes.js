@@ -8,11 +8,30 @@ class Dish {
     this.price=price;
     this.category_id=category_id
     Dish.all_dishes.push(this)
+    // Dish.all_dishes.sort((a, b) => (Category.findCategory('id',a.category_id).name > Category.findCategory('id',b.category_id).name) ? 1 : (Category.findCategory('id',a.category_id).name === Category.findCategory('id',b.category_id).name) ? ((a.name > b.name) ? 1 : -1) : -1 )
   }
 
   static findDish(key,value) {
     return (this.all_dishes.find(element=>{return element[key]===value}))
   }
+
+  findOrCreateItemCategory() {
+    let categoryLi = document.getElementById(`#category${this.category_id}Group`)
+    if (!categoryLi) {
+    let categoryLi=document.createElement('li')
+    categoryLi.id = `#category${this.category_id}Group`
+    categoryLi.innerText = Category.findCategory('id', this.category_id).name
+    let ul = document.createElement('ul')
+    categoryLi.appendChild(ul)
+    dishesList.appendChild(categoryLi);
+    return ul;
+  } else {
+    let ul = document.getElementById(`#category${this.category_id}Group`).children[0]
+    return ul;
+  }
+  }
+
+
 
   displayDish(){
     let li = document.createElement('li')
@@ -45,7 +64,7 @@ class Dish {
     li.appendChild(editButton)
     li.appendChild(deleteButton)
     return li;
-    // dishesList.appendChild(li);
+    // ul.appendChild(li);
   }
 
   static createNewDish(form) {
@@ -75,12 +94,25 @@ class Dish {
   //   })
   }
 
-  deleteItem(){
+  removeItem(res){
+    if (res==='Item Deleted.') {
     Dish.all_dishes= Dish.all_dishes.filter(element=>element.id != this.id)
-    deleteItemFromDb(this.id) //remove value from DB
-    let deletedDish = document.querySelector(`#dish_${this.id}`)
-    dishesList.removeChild(deletedDish)
+    // deleteItemFromDb(this.id) //remove value from DB
+    // let deletedDish = document.querySelector(`#dish_${this.id}`)
+    // dishesList.removeChild(deletedDish)
+    let deletedItem = document.querySelector(`#dish_${this.id}`)
+    deletedItem.innerText=res;
+    deletedItem.className = 'deleted'
+    let categoryUl = document.getElementById(`#category${this.category_id}Group`).children[0]
+    setTimeout(function () {
+    categoryUl.removeChild(deletedItem)
+  },2000)
+  } else {
+    window.alert(res);
   }
+}
+
+
 
   editDish(){
     let editField = document.querySelector(`#dish_${this.id}`)
