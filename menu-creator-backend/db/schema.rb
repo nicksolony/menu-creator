@@ -21,15 +21,15 @@ ActiveRecord::Schema.define(version: 2020_09_23_191548) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "dishes", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.integer "price"
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_dishes_on_category_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
-  add_foreign_key "dishes", "categories"
+  add_foreign_key "items", "categories"
 end

@@ -1,5 +1,5 @@
-class Dish {
-  static all_dishes = []
+class Item {
+  static all_items = []
 
   constructor(name, id, description,price,category_id) {
     this.name = name;
@@ -7,12 +7,12 @@ class Dish {
     this.description=description;
     this.price=price;
     this.category_id=category_id
-    Dish.all_dishes.push(this)
-    // Dish.all_dishes.sort((a, b) => (Category.findCategory('id',a.category_id).name > Category.findCategory('id',b.category_id).name) ? 1 : (Category.findCategory('id',a.category_id).name === Category.findCategory('id',b.category_id).name) ? ((a.name > b.name) ? 1 : -1) : -1 )
+    Item.all_items.push(this)
+    // Item.all_items.sort((a, b) => (Category.findCategory('id',a.category_id).name > Category.findCategory('id',b.category_id).name) ? 1 : (Category.findCategory('id',a.category_id).name === Category.findCategory('id',b.category_id).name) ? ((a.name > b.name) ? 1 : -1) : -1 )
   }
 
-  static findDish(key,value) {
-    return (this.all_dishes.find(element=>{return element[key]===value}))
+  static findItem(key,value) {
+    return (this.all_items.find(element=>{return element[key]===value}))
   }
 
   findOrCreateItemCategory() {
@@ -23,7 +23,7 @@ class Dish {
     categoryLi.innerText = Category.findCategory('id', this.category_id).name
     let ul = document.createElement('ul')
     categoryLi.appendChild(ul)
-    dishesList.appendChild(categoryLi);
+    itemsList.appendChild(categoryLi);
     return ul;
   } else {
     let ul = document.getElementById(`#category${this.category_id}Group`).children[0]
@@ -33,20 +33,20 @@ class Dish {
 
 
 
-  displayDish(){
+  displayItem(){
     let li = document.createElement('li')
-    li.className = 'dishItem'
-    li.id = `dish_${this.id}`
+    li.className = 'itemItem'
+    li.id = `item_${this.id}`
 
     let link = document.createElement('a')
-    link.setAttribute('href',`${DISHES_URL}/${this.id}`)
+    link.setAttribute('href',`${ITEMS_URL}/${this.id}`)
     link.innerText=`${this.name} `
-    link.className = 'dishLink'
+    link.className = 'itemLink'
 
     // let categoryLink = document.createElement('a')
     // categoryLink.setAttribute('href',`${CATEGORIES_URL}/${this.category_id}`)
     // categoryLink.innerText=`${Category.findCategory('id',this.category_id).name}`
-    // categoryLink.className = 'dishCategoryLink'
+    // categoryLink.className = 'itemCategoryLink'
 
 
     let deleteButton = document.createElement('button')
@@ -67,15 +67,15 @@ class Dish {
     // ul.appendChild(li);
   }
 
-  static createNewDish(form) {
+  static createNewItem(form) {
     // const form = e.target;
-    const newDishName = form.name.value;
-    const newDishDescription = form.description.value;
-    const newDishPrice = form.price.value;
-    const newDishCategory = form.category.value;
-    const data = { name: newDishName, description: newDishDescription, price: newDishPrice, category_id: newDishCategory };
-    createNewDishInDB(data)
-  //   fetch(`${BACKEND_URL}/dishes`, {
+    const newItemName = form.name.value;
+    const newItemDescription = form.description.value;
+    const newItemPrice = form.price.value;
+    const newItemCategory = form.category.value;
+    const data = { name: newItemName, description: newItemDescription, price: newItemPrice, category_id: newItemCategory };
+    createNewItemInDB(data)
+  //   fetch(`${BACKEND_URL}/items`, {
   //     method: 'POST', // or 'PUT'
   //     headers: {
   //       'Content-Type': 'application/json',
@@ -86,8 +86,8 @@ class Dish {
   // return response.json() })
   //   .then(data => {
   //     console.log(data);
-  //     const addedDish = new Dish(data.name, data.id);
-  //     addedDish.displayDish();
+  //     const addedItem = new Item(data.name, data.id);
+  //     addedItem.displayItem();
   //   })
   //   .catch((error) => {
   //     window.alert(error)
@@ -96,11 +96,11 @@ class Dish {
 
   removeItem(res){
     if (res==='Item Deleted.') {
-    Dish.all_dishes= Dish.all_dishes.filter(element=>element.id != this.id)
+    Item.all_items= Item.all_items.filter(element=>element.id != this.id)
     // deleteItemFromDb(this.id) //remove value from DB
-    // let deletedDish = document.querySelector(`#dish_${this.id}`)
-    // dishesList.removeChild(deletedDish)
-    let deletedItem = document.querySelector(`#dish_${this.id}`)
+    // let deletedItem = document.querySelector(`#item_${this.id}`)
+    // itemsList.removeChild(deletedItem)
+    let deletedItem = document.querySelector(`#item_${this.id}`)
     deletedItem.innerText=res;
     deletedItem.className = 'deleted'
     let categoryUl = document.getElementById(`#category${this.category_id}Group`).children[0]
@@ -139,12 +139,12 @@ class Dish {
     editField.children[0].replaceWith(editItemForm)
         // console.log(editField);
 
-    // deleteItemFromDb(dish.id)
-    // let deletedDish = document.querySelector(`#dish_${dish.id}`)
-    // dishesList.removeChild(deletedDish)
+    // deleteItemFromDb(item.id)
+    // let deletedItem = document.querySelector(`#item_${item.id}`)
+    // itemsList.removeChild(deletedItem)
   }
 
-  updateDish(formData) {
-    updateDishInDB(this.id,formData.editItem.value)
+  updateItem(formData) {
+    updateItemInDB(this.id,formData.editItem.value)
   }
 }

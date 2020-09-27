@@ -24,27 +24,27 @@ Things you may want to cover:
 * ...
 
 ## User Stories
-* A user is able to view dishes, add new dish, edit dish and delete dish
+* A user is able to view items, add new item, edit item and delete item
 * A user is able to view categories, add new categories, edit categories and delete categories
 * A user is able to view menus, create a new menu, edit a menu, or delete a menu
-* A user can view dishes on a menu, add a dish to a menu, delete a dish from the menu
+* A user can view items on a menu, add a item to a menu, delete a item from the menu
 
 ## Models
-* dish
+* Item
   * Name
   * Category (belongs to)
   * Description
   * Price
-  * menus (has many through menu_dishes)
-  * menu_dishes (has many)
+  * menus (has many through menu_items)
+  * menu_items (has many)
 * menu
   * Name
-  * Dishes (has many through menu_dishes)
-  * menu_dishes (has many)
-  * categories through dishes (has many through)
+  * Items (has many through menu_items)
+  * menu_items (has many)
+  * categories through items (has many through)
 * category
   * Name
-  * Dishes (has many)
-* menu_dish
+  * Items (has many)
+* menu_item
   * menus (belongs_to)
-  * dishes (belongs_to)
+  * items (belongs_to)

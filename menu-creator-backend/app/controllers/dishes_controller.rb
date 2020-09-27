@@ -1,51 +1,51 @@
-class DishesController < ApplicationController
-  before_action :set_dish, only: [:show, :update, :destroy]
+class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :update, :destroy]
 
-  # GET /dishes
+  # GET /items
   def index
-    @dishes = Dish.all.order(:name)
+    @items = Item.all.order(:name)
 
-    render json: @dishes, include: :category
+    render json: @items, include: :category
   end
 
-  # GET /dishes/1
+  # GET /items/1
   def show
-    render json: @dish, include: :category
+    render json: @item, include: :category
   end
 
-  # POST /dishes
+  # POST /items
   def create
-    @dish = Dish.new(dish_params)
+    @item = Item.new(item_params)
 
-    if @dish.save
-      render json: @dish, status: :created, location: @dish
+    if @item.save
+      render json: @item, status: :created, location: @item
     else
-      render json: @dish.errors.full_messages, status: :unprocessable_entity
+      render json: @item.errors.full_messages, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /dishes/1
+  # PATCH/PUT /items/1
   def update
-    if @dish.update(dish_params)
-      render json: @dish
+    if @item.update(item_params)
+      render json: @item
     else
-      render json: @dish.errors.full_messages, status: :unprocessable_entity
+      render json: @item.errors.full_messages, status: :unprocessable_entity
     end
   end
 
-  # DELETE /dishes/1
+  # DELETE /items/1
   def destroy
-    @dish.destroy
+    @item.destroy
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_dish
-      @dish = Dish.find(params[:id])
+    def set_item
+      @item = Item.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
-    def dish_params
-      params.require(:dish).permit(:name,:category_id,:description,:price)
+    def item_params
+      params.require(:item).permit(:name,:category_id,:description,:price)
     end
 end

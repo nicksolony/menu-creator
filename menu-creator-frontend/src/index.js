@@ -1,8 +1,8 @@
 const BACKEND_URL = 'http://localhost:3000'
 const CATEGORIES_URL = BACKEND_URL+'/categories'
-const DISHES_URL = BACKEND_URL+'/dishes'
+const ITEMS_URL = BACKEND_URL+'/items'
 const categoriesList = document.querySelector('#categoriesList');
-const addDishForm = document.querySelector('#newDishForm');
+const addItemForm = document.querySelector('#newItemForm');
 
 function populateDynamicCategoryList() {
   let dropDown = document.querySelector('#dynamicDropdown')
@@ -40,7 +40,7 @@ let allCategories = Category.all_categories.sort(function(a, b) {
 function showAddCategoryForm()
 {
   let li = document.createElement('li')
-  li.className = 'dishCategory'
+  li.className = 'itemCategory'
   const newCategoryForm = document.createElement('form')
   newCategoryForm.id = 'newCategoryForm'
 
@@ -61,18 +61,18 @@ function showAddCategoryForm()
   categoriesList.appendChild(li)
 }
 
-function showAddDishForm()
+function showAddItemForm()
   {
-    addDishForm.style.display='block'
+    addItemForm.style.display='block'
     populateDynamicCategoryList()
   }
 
-function hideAddDishForm()
+function hideAddItemForm()
   {
-    addDishForm.style.display='none'
-    document.querySelector('#newDishName').value=''
-    document.querySelector('#newDishDescription').value=''
-    document.querySelector('#newDishPrice').value=''
+    addItemForm.style.display='none'
+    document.querySelector('#newItemName').value=''
+    document.querySelector('#newItemDescription').value=''
+    document.querySelector('#newItemPrice').value=''
   }
 
 function removeCategory(id,res){
@@ -93,8 +93,8 @@ function removeCategory(id,res){
 
 // function removeItem(id,res){
 //   if (res==='Item Deleted.') {
-//     Dish.all_dishes= Dish.all_dishes.filter(element=>element.id != id)
-//     let deletedItem = document.querySelector(`#dish_${id}`)
+//     Item.all_items= Item.all_items.filter(element=>element.id != id)
+//     let deletedItem = document.querySelector(`#item_${id}`)
 //     deletedItem.innerText=res;
 //     deletedItem.className = 'deleted'
 //     debugger

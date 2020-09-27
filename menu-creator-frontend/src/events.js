@@ -1,7 +1,7 @@
 
 window.addEventListener('DOMContentLoaded',(e)=>{
   loadCategories()
-  loadDishes()
+  loadItems()
 })
 
 window.addEventListener('click',(e)=>{
@@ -11,10 +11,10 @@ window.addEventListener('click',(e)=>{
     showAddCategoryForm();
   };
 
-  if (e.target.className === 'dishCategory') {
+  if (e.target.className === 'itemCategory') {
   // e.preventDefault();
   console.log(e.target.parentNode);
-  } //this will show dishes from the category only
+} //this will show itemes from the category only
 
   if (e.target.className === 'deleteCategory') {
   // e.preventDefault();
@@ -31,16 +31,16 @@ window.addEventListener('click',(e)=>{
 
   if (e.target.className === 'editItem') {
   // e.preventDefault();
-  let item = Dish.findDish('id',parseInt(e.target.id,10))
+  let item = Item.findItem('id',parseInt(e.target.id,10))
   item.editItem()
   }
 
-  if (e.target.id === 'addDish') {
-    showAddDishForm();
+  if (e.target.id === 'addItem') {
+    showAddItemForm();
   };
 
-  if (e.target.id === 'hideDishForm') {
-    hideAddDishForm();
+  if (e.target.id === 'hideItemForm') {
+    hideAddItemForm();
   };
 
   if (e.target.className === 'deleteItem') {
@@ -63,7 +63,7 @@ window.addEventListener('submit',(e)=>{
     editedCategory.updateCategory(e.target);
   }
 
-  if (e.target.id === 'addDishForm') {
-    Dish.createNewDish(e.target)
+  if (e.target.id === 'addItemForm') {
+    Item.createNewItem(e.target)
   }
 })

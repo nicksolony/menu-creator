@@ -19,7 +19,7 @@ class Category {
     let link = document.createElement('a')
     link.setAttribute('href',`${BACKEND_URL}/categories/${this.id}`)
     link.innerText=`${this.name} `
-    link.className = 'dishCategory'
+    link.className = 'itemCategory'
 
 
     let deleteButton = document.createElement('button')

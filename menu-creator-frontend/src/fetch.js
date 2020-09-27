@@ -11,16 +11,16 @@ function loadCategories() {
     });
 }
 
-function loadDishes() {
-  fetch (`${DISHES_URL}`)
+function loadItems() {
+  fetch (`${ITEMS_URL}`)
     .then (resp=>resp.json())
     .then (data=> {
-      Dish.all_dishes=[]
+      Item.all_items=[]
       data.forEach((item) => {
-          let newDish = new Dish(item.name,item.id,item.description,item.price, item.category_id)
-          let newRow = newDish.displayDish()
-          // dishesList.appendChild(newRow);
-          let itemCategory = newDish.findOrCreateItemCategory();
+          let newItem = new Item(item.name,item.id,item.description,item.price, item.category_id)
+          let newRow = newItem.displayItem()
+          // itemsList.appendChild(newRow);
+          let itemCategory = newItem.findOrCreateItemCategory();
           itemCategory.appendChild(newRow);
 
       });
@@ -87,8 +87,8 @@ function updateCategoryInDB(id,name) {
     })
   }
 
-function createNewDishInDB(data) {
-  fetch(`${DISHES_URL}`, {
+function createNewItemInDB(data) {
+  fetch(`${ITEMS_URL}`, {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
@@ -98,11 +98,11 @@ function createNewDishInDB(data) {
   .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
   return response.json() })
   .then(data => {
-    const addedDish = new Dish(data.name, data.id, data.description, data.price, data.category_id);
-    let itemCategory = addedDish.findOrCreateItemCategory();
-    let newRow = addedDish.displayDish();
+    const addedItem = new Item(data.name, data.id, data.description, data.price, data.category_id);
+    let itemCategory = addedItem.findOrCreateItemCategory();
+    let newRow = addedItem.displayItem();
     itemCategory.appendChild(newRow);
-    hideAddDishForm();
+    hideAddItemForm();
   })
   .catch((error) => {
     window.alert(error)
@@ -110,7 +110,7 @@ function createNewDishInDB(data) {
 }
 
 function deleteItemFromDb(id) {
-  fetch(`${DISHES_URL}/${id}`,{
+  fetch(`${ITEMS_URL}/${id}`,{
       method: 'DELETE',
       headers: {
     'Content-Type': 'application/json'
@@ -123,7 +123,7 @@ function deleteItemFromDb(id) {
         }
     })
     .then(res => {
-      let deletedItem = Dish.findDish('id',parseInt(id,10))
+      let deletedItem = Item.findItem('id',parseInt(id,10))
       deletedItem.removeItem(res)
     });
 }

@@ -11,30 +11,30 @@
       <th>Categories<br>
       <button type="button" id="addCategory">New Category</button></th>
       <th>Menu Items<br>
-      <button type="button" id="addDish">New Item</button><button type="button" id="hideDishForm">Hide Form</button></th>
+      <button type="button" id="addItem">New Item</button><button type="button" id="hideItemForm">Hide Form</button></th>
     </thead>
     <tr valign="top">
       <td>
           <ul id='categoriesList'>
-            <li id='showAll'><a href="" class='dishCategory'>Show All</a></li>
+            <li id='showAll'><a href="" class='itemCategory'>Show All</a></li>
           </ul>
       </td>
       <td>
-        <div id="newDishForm">
-            <h3 style="text-align:center;">New dish form</h3>
-          <form id="addDishForm">
+        <div id="newItemForm">
+            <h3 style="text-align:center;">New Item form</h3>
+          <form id="addItemForm">
             <table>
               <tr>
                 <td><label for="name">Item Name: </label></td>
-                <td><input id ='newDishName' type="text" name="name" value="" placeholder="add new dish name here"></td>
+                <td><input id ='newItemName' type="text" name="name" value="" placeholder="add new item name here"></td>
               </tr>
               <tr>
                 <td><label for="description">Description:</label></td>
-                <td><textarea id='newDishDescription' name="description" placeholder="describe new dish" cols="25" rows="5"></textarea></td>
+                <td><textarea id='newItemDescription' name="description" placeholder="describe new Item" cols="25" rows="5"></textarea></td>
               </tr>
               <tr>
                 <td><label for="price">Price:</label></td>
-                <td><input id='newDishPrice' type="number" name="price" value=""></td>
+                <td><input id='newItemPrice' type="number" name="price" value=""></td>
               </tr>
               <tr>
                 <td><label for="Category">Category:</label></td>
@@ -54,7 +54,7 @@
 
           </form>
         </div>
-          <ul id='dishesList'>
+          <ul id='itemsList'>
           </ul>
       </td>
       <td>
@@ -65,7 +65,7 @@
   </table>
   <script type="application/javascript" src="src/fetch.js" charset="UTF-8"></script>
   <script type="application/javascript" src="src/categories.js" charset="UTF-8"></script>
-  <script type="application/javascript" src="src/dishes.js" charset="UTF-8"></script>
+  <script type="application/javascript" src="src/items.js" charset="UTF-8"></script>
   <script type="application/javascript" src="src/events.js" charset="UTF-8"></script>
   <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
 
