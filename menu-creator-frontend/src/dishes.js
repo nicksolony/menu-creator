@@ -55,7 +55,7 @@ class Dish {
     deleteButton.innerText = '✘'
 
     let editButton = document.createElement('button')
-    editButton.className = `editDish`
+    editButton.className = `editItem`
     editButton.id = this.id
     editButton.innerText = '✎'
 
@@ -111,8 +111,6 @@ class Dish {
       removedCategory.parentNode.removeChild(removedCategory)
     }
   },1000);
-
-
   } else {
     window.alert(res);
   }
@@ -120,24 +118,25 @@ class Dish {
 
 
 
-  editDish(){
-    let editField = document.querySelector(`#dish_${this.id}`)
-    const editDishForm = document.createElement('form')
-    editDishForm.id = 'editDishForm'
+  editItem(){
+    debugger
+    let editField = document.querySelector(`#item_${this.id}`)
+    const editItemForm = document.createElement('form')
+    editItemForm.id = 'editItemForm'
 
     const input = document.createElement('input')
-    input.name = 'editDish'
+    input.name = 'editItem'
     input.value=`${this.name}`
 
     const formButton=document.createElement('input')
     formButton.type = 'submit'
     formButton.value = '✔'
-    formButton.id = 'UpdateDishButton'
-    editDishForm.appendChild(input)
-    editDishForm.appendChild(formButton)
+    formButton.id = 'UpdateItemButton'
+    editItemForm.appendChild(input)
+    editItemForm.appendChild(formButton)
     editField.children[2].remove()
     editField.children[1].remove()
-    editField.children[0].replaceWith(editDishForm)
+    editField.children[0].replaceWith(editItemForm)
         // console.log(editField);
 
     // deleteItemFromDb(dish.id)
@@ -146,6 +145,6 @@ class Dish {
   }
 
   updateDish(formData) {
-    updateDishInDB(this.id,formData.editDish.value)
+    updateDishInDB(this.id,formData.editItem.value)
   }
 }

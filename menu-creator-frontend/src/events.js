@@ -13,7 +13,8 @@ window.addEventListener('click',(e)=>{
 
   if (e.target.className === 'dishCategory') {
   // e.preventDefault();
-  console.log(e.target.parentNode);} //this will show dishes from the category only
+  console.log(e.target.parentNode);
+  } //this will show dishes from the category only
 
   if (e.target.className === 'deleteCategory') {
   // e.preventDefault();
@@ -26,6 +27,12 @@ window.addEventListener('click',(e)=>{
   // e.preventDefault();
   let category = Category.findCategory('id',parseInt(e.target.id,10))
   category.editCategory()
+  }
+
+  if (e.target.className === 'editItem') {
+  // e.preventDefault();
+  let item = Dish.findDish('id',parseInt(e.target.id,10))
+  item.editItem()
   }
 
   if (e.target.id === 'addDish') {
