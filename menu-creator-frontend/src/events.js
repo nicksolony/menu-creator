@@ -11,20 +11,15 @@ window.addEventListener('click',(e)=>{
     showAddCategoryForm();
   };
 
-  if (e.target.className === 'itemCategory') {
-  e.preventDefault();
-  if (e.target.parentNode.id == 'showAll') {
-    Item.removeAllItems()
-    Item.all_items.forEach((item) => {
-    item.addItemRow()
-    });
-
-  } else {
-    let categoryId = parseInt(e.target.parentNode.id.split('_')[1],10)
-    showItemsByCategory(categoryId)
+  if (e.target.className === 'itemCategory') {  //this will show itemes from the category only
+    e.preventDefault();
+    if (e.target.parentNode.id == 'showAll') {
+      Item.showAllItems()
+    } else {
+      let categoryId = parseInt(e.target.parentNode.id.split('_')[1],10)
+      Item.showItemsByCategory(categoryId)
+    }
   }
-
-} //this will show itemes from the category only
 
   if (e.target.className === 'deleteCategory') {
   // e.preventDefault();

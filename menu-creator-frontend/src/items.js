@@ -250,9 +250,14 @@ class Item {
     Item.removeAllItems()
     Item.all_items.forEach((item) => {
     item.addItemRow()
-  }
+  })
+}
 
   static showItemsByCategory(categoryId){
-
+    Item.removeAllItems()
+    let filteredItems = Item.all_items.filter(item=> item.category_id == categoryId)
+    filteredItems.forEach((item) => {
+    item.addItemRow()
+    })
   }
 }
