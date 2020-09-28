@@ -4,8 +4,10 @@ const ITEMS_URL = BACKEND_URL+'/items'
 const categoriesList = document.querySelector('#categoriesList');
 const addItemForm = document.querySelector('#newItemForm');
 
-function populateDynamicCategoryList() {
-  let dropDown = document.querySelector('#dynamicDropdown')
+function populateDynamicCategoryList(selector) {
+
+  let dropDown = document.getElementById(`dynamicDropdown${selector}`)
+  let itemId = parseInt(dropDown.id.split('_')[1],10);
   while (dropDown.firstChild) {
        dropDown.removeChild(dropDown.firstChild);
    };
@@ -21,6 +23,15 @@ let allCategories = Category.all_categories.sort(function(a, b) {
   return 0;
 });
 
+  if (itemId) {
+    let defaultOption = document.createElement('option')
+    let item  = Item.findItem('id',itemId)
+    let category = Category.findCategory('id',item.category_id)
+    defaultOption.value = category.id
+    defaultOption.innerText=category.name
+    dropDown.appendChild(defaultOption)
+    allCategories= allCategories.filter(element=>element != category)
+  }
   allCategories.forEach((item) => {
     let option = document.createElement('option')
     option.value = item.id
@@ -64,7 +75,7 @@ function showAddCategoryForm()
 function showAddItemForm()
   {
     addItemForm.style.display='block'
-    populateDynamicCategoryList()
+    populateDynamicCategoryList('Add')
   }
 
 function hideAddItemForm()

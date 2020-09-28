@@ -119,24 +119,102 @@ class Item {
 
 
   editItem(){
-    debugger
+
     let editField = document.querySelector(`#item_${this.id}`)
+     // debugger
     const editItemForm = document.createElement('form')
     editItemForm.id = 'editItemForm'
+    let editTable = document.createElement('table')
+    let editTableHeader =document.createElement('thead')
+    let editTableHeaderLabel =document.createElement('th')
+    const labelName = document.createElement('label')
+    labelName.innerText='Name:'
+    let editTableHeaderValue =document.createElement('th')
+    const inputName = document.createElement('input')
+    inputName.name = 'editItemName'
+    inputName.value=`${this.name}`
+    editTableHeaderLabel.appendChild(labelName)
+    editTableHeader.appendChild(editTableHeaderLabel)
+    editTableHeaderValue.appendChild(inputName)
+    editTableHeader.appendChild(editTableHeaderValue)
+    editTable.appendChild(editTableHeader)
 
-    const input = document.createElement('input')
-    input.name = 'editItem'
-    input.value=`${this.name}`
+    let editTableRow1 = document.createElement('tr')
 
-    const formButton=document.createElement('input')
-    formButton.type = 'submit'
-    formButton.value = '✔'
-    formButton.id = 'UpdateItemButton'
-    editItemForm.appendChild(input)
-    editItemForm.appendChild(formButton)
+    let editTableRow1Label = document.createElement('td')
+    let labelDescription = document.createElement('label')
+    labelDescription.innerText = 'Description:'
+
+    let editTableRow1Value = document.createElement('td')
+    const inputDescription = document.createElement('textarea')
+    inputDescription.name = 'editItemDescrption'
+    inputDescription.value=`${this.description}`
+    inputDescription.cols="25"
+    inputDescription.rows="5"
+    editTableRow1Label.appendChild(labelDescription)
+    editTableRow1Value.appendChild(inputDescription)
+    editTableRow1.appendChild(editTableRow1Label)
+    editTableRow1.appendChild(editTableRow1Value)
+    editTable.appendChild(editTableRow1)
+
+    let editTableRow2 = document.createElement('tr')
+
+    let editTableRow2Label = document.createElement('td')
+    let labelPrice = document.createElement('label')
+    labelPrice.innerText = 'Price:'
+
+    let editTableRow2Value = document.createElement('td')
+    const inputPrice = document.createElement('input')
+    inputPrice.name = 'editItemPrice'
+    inputPrice.value=`${this.price}`
+    inputPrice.type='number'
+    editTableRow2Label.appendChild(labelPrice)
+    editTableRow2Value.appendChild(inputPrice)
+    editTableRow2.appendChild(editTableRow2Label)
+    editTableRow2.appendChild(editTableRow2Value)
+    editTable.appendChild(editTableRow2)
+
+    let editTableRow3 = document.createElement('tr')
+
+    let editTableRow3Label = document.createElement('td')
+    let labelCategory = document.createElement('label')
+    labelCategory.innerText = 'Category:'
+
+
+    let editTableRow3Value = document.createElement('td')
+    const inputCategory = document.createElement('select')
+    inputCategory.id = `dynamicDropdownEdit_${this.id}`
+    inputCategory.name = 'editItemCategory'
+
+    // const selectedValue = document.createElement('option')
+    // selectedValue.innerText=`${Category.findCategory(`id`,this.category_id).name}`
+    // inputCategory.appendChild(selectedValue)
+    editTableRow3Label.appendChild(labelCategory)
+    editTableRow3Value.appendChild(inputCategory)
+    editTableRow3.appendChild(editTableRow3Label)
+    editTableRow3.appendChild(editTableRow3Value)
+    editTable.appendChild(editTableRow3)
+    // const inputPrice = document.createElement('input')
+    // inputPrice.name = 'editItemPrice'
+    // inputPrice.value=`${this.price}`
+    // const inputCategory = document.createElement('input')
+    // inputCategory.name = 'editItemCategory'
+    // inputCategory.value=`${Category.findCategory('id',this.category_id).name}`
+    //
+    //
+    // const formButton=document.createElement('input')
+    // formButton.type = 'submit'
+    // formButton.value = '✔'
+    // formButton.id = 'UpdateItemButton'
+    editItemForm.appendChild(editTable)
+    // editItemForm.appendChild(inputDescription)
+    // editItemForm.appendChild(inputPrice)
+    // editItemForm.appendChild(inputCategory)
+    // editItemForm.appendChild(formButton)
     editField.children[2].remove()
     editField.children[1].remove()
-    editField.children[0].replaceWith(editItemForm)
+    editField.children[0].replaceWith(editTable)
+    populateDynamicCategoryList(`Edit_${this.id}`)
         // console.log(editField);
 
     // deleteItemFromDb(item.id)
