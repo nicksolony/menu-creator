@@ -12,8 +12,9 @@ window.addEventListener('click',(e)=>{
   };
 
   if (e.target.className === 'itemCategory') {
-  // e.preventDefault();
+  e.preventDefault();
   console.log(e.target.parentNode);
+  
 } //this will show itemes from the category only
 
   if (e.target.className === 'deleteCategory') {
