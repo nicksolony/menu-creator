@@ -35,7 +35,7 @@ class Item {
 
   displayItem(){
     let li = document.createElement('li')
-    li.className = 'itemItem'
+    li.className = 'item'
     li.id = `item_${this.id}`
 
     let link = document.createElement('a')
@@ -192,7 +192,7 @@ class Item {
 
     let editTableRow3Value = document.createElement('td')
     const inputCategory = document.createElement('select')
-    inputCategory.id = `dynamicDropdownEdit_${this.id}`
+    inputCategory.id = `dynamicDropdown`
     inputCategory.name = 'editItemCategory'
 
     // const selectedValue = document.createElement('option')
@@ -223,7 +223,8 @@ class Item {
     editField.children[2].remove()
     editField.children[1].remove()
     editField.children[0].replaceWith(editItemForm)
-    populateDynamicCategoryList(`Edit_${this.id}`)
+    debugger
+    populateDynamicCategoryList(this.id)
         // console.log(editField);
 
     // deleteItemFromDb(item.id)
@@ -232,6 +233,6 @@ class Item {
   }
 
   updateItem(formData) {
-    updateItemInDB(this.id,formData.editItem.value)
+    updateItemInDB(this.id,formData)
   }
 }

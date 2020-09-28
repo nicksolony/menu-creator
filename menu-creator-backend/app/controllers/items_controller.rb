@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.all.order(:name)
+    @items = Item.all
 
     render json: @items, include: :category
   end

@@ -69,7 +69,7 @@ window.addEventListener('submit',(e)=>{
 
   if (e.target.id === 'editItemForm') {
     let editedItem = Item.findItem('id',parseInt(e.target.parentNode.id.split('item_')[1],10))
-    console.log(editedItem);
+    editedItem.updateItem(e.target)
   }
 
 })

@@ -127,3 +127,56 @@ function deleteItemFromDb(id) {
       deletedItem.removeItem(res)
     });
 }
+
+function updateItemInDB(id,formData) {
+    fetch(`${ITEMS_URL}/${id}`, {
+      method: 'PUT', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: formData.editItemName.value,
+        description: formData.editItemDescrption.value,
+        price: formData.editItemPrice.value,
+        category_id: formData.editItemCategory.value
+        }),
+    })
+    .then(response => { if (!response.ok) {return response.json().then (data=> { console.log(error); throw data}) }
+    return response.json() })
+    .then(data => {
+      let editField = document.querySelector(`#item_${id}`)
+      let editedItem = Item.findItem('id',id)
+      const oldCategory = editedItem.category_id
+      debugger
+      // for (const [key,value] of Object.entries(editedItem)) {
+      //   Item.all_items[Item.all_items.indexOf(editedItem)].key = data.key
+      // }
+
+      // Item.all_items[Item.all_items.indexOf(editedItem
+      // )] = data;
+
+
+      Item.all_items[Item.all_items.indexOf(editedItem
+      )].name = data.name;
+      Item.all_items[Item.all_items.indexOf(editedItem
+      )].description = data.description;
+      Item.all_items[Item.all_items.indexOf(editedItem
+      )].price = data.price;
+      Item.all_items[Item.all_items.indexOf(editedItem
+      )].category_id = data.category_id;
+
+
+      if (oldCategory === editedItem.category_id) {
+        editField.parentNode.replaceChild(editedItem.displayItem(), editField);
+      } else {
+        let itemCategory = editedItem.findOrCreateItemCategory();
+        let newRow = editedItem.displayItem();
+        editField.parentNode.removeChild(editField);
+        itemCategory.appendChild(newRow);
+      }
+      // populateDynamicCategoryList();
+    })
+    .catch((error) => {
+      window.alert(error)
+    })
+  }

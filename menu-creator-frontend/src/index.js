@@ -4,10 +4,9 @@ const ITEMS_URL = BACKEND_URL+'/items'
 const categoriesList = document.querySelector('#categoriesList');
 const addItemForm = document.querySelector('#newItemForm');
 
-function populateDynamicCategoryList(selector) {
+function populateDynamicCategoryList(itemId=0) {
 
-  let dropDown = document.getElementById(`dynamicDropdown${selector}`)
-  let itemId = parseInt(dropDown.id.split('_')[1],10);
+  let dropDown = document.getElementById(`dynamicDropdown`)
   while (dropDown.firstChild) {
        dropDown.removeChild(dropDown.firstChild);
    };
@@ -75,7 +74,7 @@ function showAddCategoryForm()
 function showAddItemForm()
   {
     addItemForm.style.display='block'
-    populateDynamicCategoryList('Add')
+    populateDynamicCategoryList()
   }
 
 function hideAddItemForm()
