@@ -80,7 +80,7 @@ function updateCategoryInDB(id,name) {
       Category.all_categories[Category.all_categories.indexOf(editedCategory
 )].name = name
       editField.parentNode.replaceChild(editedCategory.displayCategory(), editField);
-      populateDynamicCategoryList();
+      populateDynamicCategoryList(id);
     })
     .catch((error) => {
       window.alert(error)
@@ -147,7 +147,6 @@ function updateItemInDB(id,formData) {
       let editField = document.querySelector(`#item_${id}`)
       let editedItem = Item.findItem('id',id)
       const oldCategory = editedItem.category_id
-      debugger
       // for (const [key,value] of Object.entries(editedItem)) {
       //   Item.all_items[Item.all_items.indexOf(editedItem)].key = data.key
       // }

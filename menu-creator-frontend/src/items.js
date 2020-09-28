@@ -192,7 +192,7 @@ class Item {
 
     let editTableRow3Value = document.createElement('td')
     const inputCategory = document.createElement('select')
-    inputCategory.id = `dynamicDropdown`
+    inputCategory.id = `dynamicDropdown${this.id}`
     inputCategory.name = 'editItemCategory'
 
     // const selectedValue = document.createElement('option')
@@ -223,7 +223,6 @@ class Item {
     editField.children[2].remove()
     editField.children[1].remove()
     editField.children[0].replaceWith(editItemForm)
-    debugger
     populateDynamicCategoryList(this.id)
         // console.log(editField);
 

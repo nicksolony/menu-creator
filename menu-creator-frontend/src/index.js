@@ -5,8 +5,36 @@ const categoriesList = document.querySelector('#categoriesList');
 const addItemForm = document.querySelector('#newItemForm');
 
 function populateDynamicCategoryList(itemId=0) {
-
+  if (itemId) {
+    
+    let dropDown = document.getElementById(`dynamicDropdown${itemId}`)
+    allCategories= sortCategories(dropDown)
+    let defaultOption = document.createElement('option')
+    let item  = Item.findItem('id',itemId)
+    let category = Category.findCategory('id',item.category_id)
+    defaultOption.value = category.id
+    defaultOption.innerText=category.name
+    dropDown.appendChild(defaultOption)
+    allCategories= allCategories.filter(element=>element != category)
+    allCategories.forEach((item) => {
+      let option = document.createElement('option')
+      option.value = item.id
+      option.innerText=item.name
+      dropDown.appendChild(option)
+    });
+  } else {
   let dropDown = document.getElementById(`dynamicDropdown`)
+  sortCategories(dropDown).forEach((item) => {
+    let option = document.createElement('option')
+    option.value = item.id
+    option.innerText=item.name
+    dropDown.appendChild(option)
+    }
+)}
+}
+
+function sortCategories(dropDown) {
+
   while (dropDown.firstChild) {
        dropDown.removeChild(dropDown.firstChild);
    };
@@ -21,23 +49,7 @@ let allCategories = Category.all_categories.sort(function(a, b) {
   }
   return 0;
 });
-
-  if (itemId) {
-    let defaultOption = document.createElement('option')
-    let item  = Item.findItem('id',itemId)
-    let category = Category.findCategory('id',item.category_id)
-    defaultOption.value = category.id
-    defaultOption.innerText=category.name
-    dropDown.appendChild(defaultOption)
-    allCategories= allCategories.filter(element=>element != category)
-  }
-  allCategories.forEach((item) => {
-    let option = document.createElement('option')
-    option.value = item.id
-    option.innerText=item.name
-    dropDown.appendChild(option)
-  });
-
+return allCategories;
 }
 
 // function loadCategories() {
