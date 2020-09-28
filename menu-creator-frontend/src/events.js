@@ -15,13 +15,13 @@ window.addEventListener('click',(e)=>{
   e.preventDefault();
   if (e.target.parentNode.id == 'showAll') {
     Item.removeAllItems()
-    // loadItems()
     Item.all_items.forEach((item) => {
     item.addItemRow()
     });
 
   } else {
-    console.log(e.target.parentNode.id);
+    let categoryId = parseInt(e.target.parentNode.id.split('_')[1],10)
+    showItemsByCategory(categoryId)
   }
 
 } //this will show itemes from the category only

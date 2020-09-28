@@ -246,4 +246,13 @@ class Item {
      }
 
   }
+  static showAllItems(){
+    Item.removeAllItems()
+    Item.all_items.forEach((item) => {
+    item.addItemRow()
+  }
+
+  static showItemsByCategory(categoryId){
+
+  }
 }

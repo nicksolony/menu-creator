@@ -99,7 +99,4 @@ class Category {
     updateCategoryInDB(this.id,formData.editCategory.value)
   }
 
-  showCategoryItems(){
-    
-  }
 }
