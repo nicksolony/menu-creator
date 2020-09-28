@@ -133,11 +133,20 @@ class Item {
     const inputName = document.createElement('input')
     inputName.name = 'editItemName'
     inputName.value=`${this.name}`
+
+    const formButton=document.createElement('input')
+    formButton.type = 'submit'
+    formButton.value = '✔'
+    formButton.id = 'UpdateItemButton'
+
     editTableHeaderLabel.appendChild(labelName)
     editTableHeader.appendChild(editTableHeaderLabel)
     editTableHeaderValue.appendChild(inputName)
+    editTableHeaderValue.appendChild(formButton)
     editTableHeader.appendChild(editTableHeaderValue)
     editTable.appendChild(editTableHeader)
+
+
 
     let editTableRow1 = document.createElement('tr')
 
@@ -213,7 +222,7 @@ class Item {
     // editItemForm.appendChild(formButton)
     editField.children[2].remove()
     editField.children[1].remove()
-    editField.children[0].replaceWith(editTable)
+    editField.children[0].replaceWith(editItemForm)
     populateDynamicCategoryList(`Edit_${this.id}`)
         // console.log(editField);
 
