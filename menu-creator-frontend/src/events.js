@@ -22,7 +22,6 @@ window.addEventListener('click',(e)=>{
   }
 
   if (e.target.className === 'deleteCategory') {
-  // e.preventDefault();
   deleteCategoryFromDb(e.target.id)
   // let category = Category.findCategory('id',parseInt(e.target.id,10))
   // category.deleteCategory()
@@ -53,6 +52,11 @@ window.addEventListener('click',(e)=>{
   deleteItemFromDb(e.target.id)
   // let category = Category.findCategory('id',parseInt(e.target.id,10))
   // category.deleteCategory()
+  }
+
+  if (e.target.className === 'itemLink') {
+    e.preventDefault();
+    console.log(e.target.parentNode);
   }
 
 })
