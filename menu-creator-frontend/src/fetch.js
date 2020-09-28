@@ -166,7 +166,12 @@ function updateItemInDB(id,formData) {
       } else {
         let itemCategory = editedItem.findOrCreateItemCategory();
         let newRow = editedItem.displayItem();
+        const categoryUl = editField.parentNode
         editField.parentNode.removeChild(editField);
+        if (categoryUl.childElementCount === 0) {
+          let removedCategory = categoryUl.parentNode
+          removedCategory.parentNode.removeChild(removedCategory)
+        }
         itemCategory.appendChild(newRow);
       }
       // populateDynamicCategoryList();

@@ -126,88 +126,95 @@ class Item {
   editItem(){
 
     let editField = document.querySelector(`#item_${this.id}`)
-     // debugger
-    const editItemForm = document.createElement('form')
+    let editItemForm = document.getElementById('addItemForm').cloneNode(true)
+
+    // const editItemForm = document.createElement('form')
     editItemForm.id = 'editItemForm'
-    let editTable = document.createElement('table')
-    let editTableHeader =document.createElement('thead')
-    let editTableHeaderLabel =document.createElement('th')
-    const labelName = document.createElement('label')
-    labelName.innerText='Name:'
-    let editTableHeaderValue =document.createElement('th')
-    const inputName = document.createElement('input')
+
+    // let editTable = document.createElement('table')
+    // let editTableHeader =document.createElement('thead')
+    // let editTableHeaderLabel =document.createElement('th')
+    // const labelName = document.createElement('label')
+    // labelName.innerText='Name:'
+    // let editTableHeaderValue =document.createElement('th')
+    // const inputName = document.createElement('input')
+    const inputName = editItemForm.querySelector('#newItemName')
     inputName.name = 'editItemName'
+    inputName.id = 'editItemName'
     inputName.value=`${this.name}`
 
-    const formButton=document.createElement('input')
-    formButton.type = 'submit'
-    formButton.value = '✔'
+    // const formButton=document.createElement('input')
+    // formButton.type = 'submit'
+    const formButton=editItemForm.querySelector('#submit')
+    formButton.value = 'Update'
     formButton.id = 'UpdateItemButton'
 
-    editTableHeaderLabel.appendChild(labelName)
-    editTableHeader.appendChild(editTableHeaderLabel)
-    editTableHeaderValue.appendChild(inputName)
-    editTableHeaderValue.appendChild(formButton)
-    editTableHeader.appendChild(editTableHeaderValue)
-    editTable.appendChild(editTableHeader)
+    // editTableHeaderLabel.appendChild(labelName)
+    // editTableHeader.appendChild(editTableHeaderLabel)
+    // editTableHeaderValue.appendChild(inputName)
+    // editTableHeaderValue.appendChild(formButton)
+    // editTableHeader.appendChild(editTableHeaderValue)
+    // editTable.appendChild(editTableHeader)
 
 
-
-    let editTableRow1 = document.createElement('tr')
-
-    let editTableRow1Label = document.createElement('td')
-    let labelDescription = document.createElement('label')
-    labelDescription.innerText = 'Description:'
-
-    let editTableRow1Value = document.createElement('td')
-    const inputDescription = document.createElement('textarea')
+    // let editTableRow1 = document.createElement('tr')
+    // let editTableRow1Label = document.createElement('td')
+    // let labelDescription = document.createElement('label')
+    // labelDescription.innerText = 'Description:'
+    //
+    // let editTableRow1Value = document.createElement('td')
+    // const inputDescription = document.createElement('textarea')
+    const inputDescription = editItemForm.querySelector('#newItemDescription')
     inputDescription.name = 'editItemDescrption'
+    inputDescription.id = 'editItemDescrption'
     inputDescription.value=`${this.description}`
     inputDescription.cols="25"
     inputDescription.rows="5"
-    editTableRow1Label.appendChild(labelDescription)
-    editTableRow1Value.appendChild(inputDescription)
-    editTableRow1.appendChild(editTableRow1Label)
-    editTableRow1.appendChild(editTableRow1Value)
-    editTable.appendChild(editTableRow1)
+    // editTableRow1Label.appendChild(labelDescription)
+    // editTableRow1Value.appendChild(inputDescription)
+    // editTableRow1.appendChild(editTableRow1Label)
+    // editTableRow1.appendChild(editTableRow1Value)
+    // editTable.appendChild(editTableRow1)
 
-    let editTableRow2 = document.createElement('tr')
+    // let editTableRow2 = document.createElement('tr')
+    // let editTableRow2Label = document.createElement('td')
+    // let labelPrice = document.createElement('label')
+    // labelPrice.innerText = 'Price:'
 
-    let editTableRow2Label = document.createElement('td')
-    let labelPrice = document.createElement('label')
-    labelPrice.innerText = 'Price:'
-
-    let editTableRow2Value = document.createElement('td')
-    const inputPrice = document.createElement('input')
+    // let editTableRow2Value = document.createElement('td')
+    // const inputPrice = document.createElement('input')
+    const inputPrice = editItemForm.querySelector('#newItemPrice')
     inputPrice.name = 'editItemPrice'
+    inputPrice.id = 'editItemPrice'
     inputPrice.value=`${this.price}`
-    inputPrice.type='number'
-    editTableRow2Label.appendChild(labelPrice)
-    editTableRow2Value.appendChild(inputPrice)
-    editTableRow2.appendChild(editTableRow2Label)
-    editTableRow2.appendChild(editTableRow2Value)
-    editTable.appendChild(editTableRow2)
+    // inputPrice.type='number'
+    // editTableRow2Label.appendChild(labelPrice)
+    // editTableRow2Value.appendChild(inputPrice)
+    // editTableRow2.appendChild(editTableRow2Label)
+    // editTableRow2.appendChild(editTableRow2Value)
+    // editTable.appendChild(editTableRow2)
 
-    let editTableRow3 = document.createElement('tr')
-
-    let editTableRow3Label = document.createElement('td')
-    let labelCategory = document.createElement('label')
-    labelCategory.innerText = 'Category:'
-
-
-    let editTableRow3Value = document.createElement('td')
-    const inputCategory = document.createElement('select')
+    // let editTableRow3 = document.createElement('tr')
+    //
+    // let editTableRow3Label = document.createElement('td')
+    // let labelCategory = document.createElement('label')
+    // labelCategory.innerText = 'Category:'
+    //
+    //
+    // let editTableRow3Value = document.createElement('td')
+    // const inputCategory = document.createElement('select')
+    const inputCategory = editItemForm.querySelector('#dynamicDropdown')
     inputCategory.id = `dynamicDropdown${this.id}`
     inputCategory.name = 'editItemCategory'
 
     // const selectedValue = document.createElement('option')
     // selectedValue.innerText=`${Category.findCategory(`id`,this.category_id).name}`
     // inputCategory.appendChild(selectedValue)
-    editTableRow3Label.appendChild(labelCategory)
-    editTableRow3Value.appendChild(inputCategory)
-    editTableRow3.appendChild(editTableRow3Label)
-    editTableRow3.appendChild(editTableRow3Value)
-    editTable.appendChild(editTableRow3)
+    // editTableRow3Label.appendChild(labelCategory)
+    // editTableRow3Value.appendChild(inputCategory)
+    // editTableRow3.appendChild(editTableRow3Label)
+    // editTableRow3.appendChild(editTableRow3Value)
+    // editTable.appendChild(editTableRow3)
     // const inputPrice = document.createElement('input')
     // inputPrice.name = 'editItemPrice'
     // inputPrice.value=`${this.price}`
@@ -220,7 +227,7 @@ class Item {
     // formButton.type = 'submit'
     // formButton.value = '✔'
     // formButton.id = 'UpdateItemButton'
-    editItemForm.appendChild(editTable)
+    // editItemForm.appendChild(editTable)
     // editItemForm.appendChild(inputDescription)
     // editItemForm.appendChild(inputPrice)
     // editItemForm.appendChild(inputCategory)
