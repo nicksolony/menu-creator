@@ -98,4 +98,8 @@ class Category {
     populateDynamicCategoryList();
     updateCategoryInDB(this.id,formData.editCategory.value)
   }
+
+  showCategoryItems(){
+    
+  }
 }

@@ -6,7 +6,7 @@ const addItemForm = document.querySelector('#newItemForm');
 
 function populateDynamicCategoryList(itemId=0) {
   if (itemId) {
-    
+
     let dropDown = document.getElementById(`dynamicDropdown${itemId}`)
     allCategories= sortCategories(dropDown)
     let defaultOption = document.createElement('option')
@@ -86,12 +86,14 @@ function showAddCategoryForm()
 function showAddItemForm()
   {
     addItemForm.style.display='block'
+    hideItemForm.styly.display='block'
     populateDynamicCategoryList()
   }
 
 function hideAddItemForm()
   {
     addItemForm.style.display='none'
+    hideItemForm.styly.display='none'
     document.querySelector('#newItemName').value=''
     document.querySelector('#newItemDescription').value=''
     document.querySelector('#newItemPrice').value=''

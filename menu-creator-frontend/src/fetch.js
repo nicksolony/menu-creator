@@ -18,11 +18,7 @@ function loadItems() {
       Item.all_items=[]
       data.forEach((item) => {
           let newItem = new Item(item.name,item.id,item.description,item.price, item.category_id)
-          let newRow = newItem.displayItem()
-          // itemsList.appendChild(newRow);
-          let itemCategory = newItem.findOrCreateItemCategory();
-          itemCategory.appendChild(newRow);
-
+          newItem.addItemRow()
       });
     });
 }

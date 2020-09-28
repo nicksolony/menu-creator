@@ -66,7 +66,12 @@ class Item {
     return li;
     // ul.appendChild(li);
   }
-
+  addItemRow() {
+    let newRow = this.displayItem()
+    // itemsList.appendChild(newRow);
+    let itemCategory = this.findOrCreateItemCategory();
+    itemCategory.appendChild(newRow);
+  }
   static createNewItem(form) {
     // const form = e.target;
     const newItemName = form.name.value;
@@ -233,5 +238,12 @@ class Item {
 
   updateItem(formData) {
     updateItemInDB(this.id,formData)
+  }
+
+  static removeAllItems() {
+    while (itemsList.firstChild) {
+         itemsList.removeChild(itemsList.firstChild);
+     }
+
   }
 }

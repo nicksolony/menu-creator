@@ -13,8 +13,17 @@ window.addEventListener('click',(e)=>{
 
   if (e.target.className === 'itemCategory') {
   e.preventDefault();
-  console.log(e.target.parentNode);
-  
+  if (e.target.parentNode.id == 'showAll') {
+    Item.removeAllItems()
+    // loadItems()
+    Item.all_items.forEach((item) => {
+    item.addItemRow()
+    });
+
+  } else {
+    console.log(e.target.parentNode.id);
+  }
+
 } //this will show itemes from the category only
 
   if (e.target.className === 'deleteCategory') {
