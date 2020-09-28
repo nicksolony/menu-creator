@@ -3,6 +3,7 @@ const CATEGORIES_URL = BACKEND_URL+'/categories'
 const ITEMS_URL = BACKEND_URL+'/items'
 const categoriesList = document.querySelector('#categoriesList');
 const addItemForm = document.querySelector('#newItemForm');
+const hideItemButton = document.querySelector('#hideItemForm');
 
 function populateDynamicCategoryList(itemId=0) {
   if (itemId) {
@@ -86,14 +87,14 @@ function showAddCategoryForm()
 function showAddItemForm()
   {
     addItemForm.style.display='block'
-    hideItemForm.styly.display='block'
+    hideItemButton.style.display='inline'
     populateDynamicCategoryList()
   }
 
 function hideAddItemForm()
   {
     addItemForm.style.display='none'
-    hideItemForm.styly.display='none'
+    hideItemButton.style.display='none'
     document.querySelector('#newItemName').value=''
     document.querySelector('#newItemDescription').value=''
     document.querySelector('#newItemPrice').value=''
