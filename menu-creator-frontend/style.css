@@ -40,3 +40,7 @@ a.itemCategoryLink {
 #newItemForm,#hideItemForm {
   display: none;
 }
+
+span {
+  display: inline-block;
+}

@@ -56,7 +56,9 @@ window.addEventListener('click',(e)=>{
 
   if (e.target.className === 'itemLink') {
     e.preventDefault();
-    console.log(e.target.parentNode);
+    let item = Item.findItem('id',parseInt(e.target.href.split('http://localhost:3000/items/')[1],10))
+    item.showItem();
+
   }
 
 })

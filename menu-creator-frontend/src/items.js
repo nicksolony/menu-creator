@@ -140,14 +140,13 @@ class Item {
     // const inputName = document.createElement('input')
     const inputName = editItemForm.querySelector('#newItemName')
     inputName.name = 'editItemName'
-    inputName.id = 'editItemName'
     inputName.value=`${this.name}`
 
     // const formButton=document.createElement('input')
     // formButton.type = 'submit'
     const formButton=editItemForm.querySelector('#submit')
     formButton.value = 'Update'
-    formButton.id = 'UpdateItemButton'
+
 
     // editTableHeaderLabel.appendChild(labelName)
     // editTableHeader.appendChild(editTableHeaderLabel)
@@ -166,7 +165,7 @@ class Item {
     // const inputDescription = document.createElement('textarea')
     const inputDescription = editItemForm.querySelector('#newItemDescription')
     inputDescription.name = 'editItemDescrption'
-    inputDescription.id = 'editItemDescrption'
+
     inputDescription.value=`${this.description}`
     inputDescription.cols="25"
     inputDescription.rows="5"
@@ -185,7 +184,7 @@ class Item {
     // const inputPrice = document.createElement('input')
     const inputPrice = editItemForm.querySelector('#newItemPrice')
     inputPrice.name = 'editItemPrice'
-    inputPrice.id = 'editItemPrice'
+
     inputPrice.value=`${this.price}`
     // inputPrice.type='number'
     // editTableRow2Label.appendChild(labelPrice)
@@ -266,5 +265,43 @@ class Item {
     filteredItems.forEach((item) => {
     item.addItemRow()
     })
+  }
+
+  showItem(){
+
+    const showField = document.querySelector(`#item_${this.id}`)
+    const showItemForm = document.getElementById('addItemForm').cloneNode(true)
+
+    showItemForm.id = 'showItemForm'
+    const showNameField = showItemForm.querySelector('#newItemName')
+    const showName = document.createElement('span')
+    showName.name = 'showItemName'
+    showName.innerText=`${this.name}`
+    showNameField.parentNode.replaceChild(showName,showNameField)
+
+    const showDescriptionField = showItemForm.querySelector('#newItemDescription')
+    const showDescription = document.createElement('span')
+    showDescription.name = 'showItemDescrption'
+    showDescription.innerText=`${this.description}`
+    showDescription.setAttribute('style',"width:250px;")
+    showDescriptionField.parentNode.replaceChild(showDescription,showDescriptionField)
+
+    const showPriceField = showItemForm.querySelector('#newItemPrice')
+    const showPrice = document.createElement('span')
+    showPrice.name = 'showItemPrice'
+    showPrice.innerText=`${this.price}`
+    showPriceField.parentNode.replaceChild(showPrice,showPriceField)
+
+    const showCategoryField = showItemForm.querySelector('#dynamicDropdown')
+    const categoryRow = showCategoryField.parentNode.parentNode
+    categoryRow.parentNode.removeChild(categoryRow)
+    const formButton=showItemForm.querySelector('#submit')
+    formButton.value = 'Hide Info'
+    formButton.className = 'HideInfoButton'
+
+    showField.children[2].remove()
+    showField.children[1].remove()
+    showField.children[0].replaceWith(showItemForm)
+
   }
 }
