@@ -58,7 +58,13 @@ window.addEventListener('click',(e)=>{
     e.preventDefault();
     let item = Item.findItem('id',parseInt(e.target.href.split('http://localhost:3000/items/')[1],10))
     item.showItem();
+  }
 
+  if (e.target.className === 'HideInfoButton') {
+    e.preventDefault();
+    const row = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode
+    const item = Item.findItem('id',parseInt(row.id.split('item_')[1]))
+    row.parentNode.replaceChild(item.displayItem(),row)
   }
 
 })
