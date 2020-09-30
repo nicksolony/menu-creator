@@ -20,3 +20,15 @@ span {
 #newMenuForm ul {
   text-align: left;
 }
+
+
+.item, .categoryItem {
+  display: block;
+}
+
+.editItem, .deleteItem, .deleteCategory, .editCategory  {
+  float: right;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

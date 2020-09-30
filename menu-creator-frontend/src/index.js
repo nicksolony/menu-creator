@@ -14,6 +14,7 @@ function populateDynamicCategoryList(itemId=0) {
     allCategories= sortCategories(dropDown)
     let defaultOption = document.createElement('option')
     let item  = Item.findItem('id',itemId)
+    // debugger
     let category = Category.findCategory('id',item.category_id)
     defaultOption.value = category.id
     defaultOption.innerText=category.name
@@ -37,10 +38,11 @@ function populateDynamicCategoryList(itemId=0) {
 }
 
 function sortCategories(dropDown) {
-
-  while (dropDown.firstChild) {
-       dropDown.removeChild(dropDown.firstChild);
-   };
+  if (dropDown) {
+    while (dropDown.firstChild) {
+         dropDown.removeChild(dropDown.firstChild);
+     };
+  }
 let allCategories = Category.all_categories.sort(function(a, b) {
   var nameA = a.name.toUpperCase(); // ignore upper and lowercase
   var nameB = b.name.toUpperCase(); // ignore upper and lowercase

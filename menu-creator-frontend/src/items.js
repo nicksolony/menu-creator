@@ -53,16 +53,19 @@ class Item {
     deleteButton.className = `deleteItem`
     deleteButton.id = this.id
     deleteButton.innerText = '✘'
+    deleteButton.style ="align: right;"
 
     let editButton = document.createElement('button')
     editButton.className = `editItem`
     editButton.id = this.id
     editButton.innerText = '✎'
+    editButton.style ="right;"
 
     li.appendChild(link)
     // li.appendChild(categoryLink)
-    li.appendChild(editButton)
+
     li.appendChild(deleteButton)
+    li.appendChild(editButton)
     return li;
     // ul.appendChild(li);
   }

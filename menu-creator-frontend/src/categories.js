@@ -33,8 +33,8 @@ class Category {
     editButton.innerText = '✎'
 
     li.appendChild(link)
-    li.appendChild(editButton)
     li.appendChild(deleteButton)
+    li.appendChild(editButton)
     return li;
     // categoriesList.appendChild(li);
   }
@@ -95,7 +95,7 @@ class Category {
   }
 
   updateCategory(formData) {
-    populateDynamicCategoryList();
+    // populateDynamicCategoryList();
     updateCategoryInDB(this.id,formData.editCategory.value)
   }
 

@@ -76,7 +76,7 @@ function updateCategoryInDB(id,name) {
       Category.all_categories[Category.all_categories.indexOf(editedCategory
 )].name = name
       editField.parentNode.replaceChild(editedCategory.displayCategory(), editField);
-      populateDynamicCategoryList(id);
+      populateDynamicCategoryList();
     })
     .catch((error) => {
       window.alert(error)
