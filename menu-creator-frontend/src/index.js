@@ -4,6 +4,8 @@ const ITEMS_URL = BACKEND_URL+'/items'
 const categoriesList = document.querySelector('#categoriesList');
 const addItemForm = document.querySelector('#newItemForm');
 const hideItemButton = document.querySelector('#hideItemForm');
+const addNewMenu = document.querySelector('#newMenuForm')
+const showAllMenus = document.querySelector('#showAllMenus')
 
 function populateDynamicCategoryList(itemId=0) {
   if (itemId) {
@@ -133,3 +135,19 @@ function removeCategory(id,res){
 //     window.alert(res);
 //   }
 // }
+
+function showAddMenuForm()
+  {
+    addNewMenu.style.display='block'
+    showAllMenus.style.display='inline'
+  }
+
+
+  function showAllMenusList()
+    {
+      addNewMenu.style.display='none'
+      showAllMenus.style.display='none'
+      // document.querySelector('#newItemName').value=''
+      // document.querySelector('#newItemDescription').value=''
+      // document.querySelector('#newItemPrice').value=''
+    }

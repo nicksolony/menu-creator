@@ -67,6 +67,14 @@ window.addEventListener('click',(e)=>{
     row.parentNode.replaceChild(item.displayItem(),row)
   }
 
+  if (e.target.id === 'addNewMenu') {
+    showAddMenuForm()
+  }
+
+  if (e.target.id === 'showAllMenus') {
+    showAllMenusList()
+  }
+
 })
 
 window.addEventListener('submit',(e)=>{
