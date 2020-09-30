@@ -37,7 +37,7 @@ a.itemCategoryLink {
   border-left: 1px solid #CCCCCC;
 }
 
-#newItemForm,#hideItemForm {
+#newItemForm,#hideItemForm,#showAllMenus {
   display: none;
 }
 
