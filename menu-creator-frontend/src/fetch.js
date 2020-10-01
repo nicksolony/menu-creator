@@ -23,6 +23,20 @@ function loadItems() {
     });
 }
 
+function loadMenus() {
+  fetch (`${MENUS_URL}`)
+    .then (resp=>resp.json())
+    .then (data=> {
+      Menu.all_categories=[]
+      data.forEach((menu) => {
+        debugger
+          let newMenu = new Category(menu.name,menu.id)
+          let newRow = newCategory.displayCategory()
+          categoriesList.appendChild(newRow);
+      });
+    });
+}
+
 function createNewCategoryInDB(data) {
   fetch(`${CATEGORIES_URL}`, {
     method: 'POST', // or 'PUT'

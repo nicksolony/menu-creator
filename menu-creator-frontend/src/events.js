@@ -1,7 +1,8 @@
 
 window.addEventListener('DOMContentLoaded',(e)=>{
-  loadCategories()
-  loadItems()
+  loadCategories();
+  loadItems();
+  loadMenus();
 })
 
 window.addEventListener('click',(e)=>{

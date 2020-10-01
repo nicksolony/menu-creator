@@ -1,6 +1,7 @@
 const BACKEND_URL = 'http://localhost:3000'
 const CATEGORIES_URL = BACKEND_URL+'/categories'
 const ITEMS_URL = BACKEND_URL+'/items'
+const MENUS_URL = BACKEND_URL+'/menus'
 const categoriesList = document.querySelector('#categoriesList');
 const addItemForm = document.querySelector('#newItemForm');
 const hideItemButton = document.querySelector('#hideItemForm');
