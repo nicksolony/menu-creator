@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_191548) do
+ActiveRecord::Schema.define(version: 2020_10_01_005908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,5 +31,22 @@ ActiveRecord::Schema.define(version: 2020_09_23_191548) do
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
+  create_table "menu_items", force: :cascade do |t|
+    t.bigint "menu_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_menu_items_on_item_id"
+    t.index ["menu_id"], name: "index_menu_items_on_menu_id"
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "items", "categories"
+  add_foreign_key "menu_items", "items"
+  add_foreign_key "menu_items", "menus"
 end

@@ -18,3 +18,10 @@ Item.create(name:'Chocolate Cake', description:'Our best seller! Home-made all c
 Item.create(name:'Chicken Fingers', description:'All white meat chicken tenders, lightly breaded and crispy fried. Served with honey mustard.' ,price:11 ,category_id:2 );
 Item.create(name:'Mozzarella Sticks', description:'Lightly breaded mozzarella sticks fried to a golden brown and served with marinara sauce.' ,price:8.5 ,category_id:2 );
 Item.create(name:'Snapple', description:'' ,price:3 ,category_id:4 );
+
+
+Menu.create(name:'Test');
+Menu.create(name:'Test2');
+
+
+# Menuitem.create()
