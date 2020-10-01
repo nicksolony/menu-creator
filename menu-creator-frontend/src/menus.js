@@ -36,4 +36,8 @@ class Menu {
     return li;
   }
 
+  static findMenu(value) {
+    return (this.all_menus.find(element=>{return element.id===value}))
+  }
+
 }
