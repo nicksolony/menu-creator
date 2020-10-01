@@ -29,10 +29,13 @@ function loadMenus() {
     .then (data=> {
       Menu.all_categories=[]
       data.forEach((menu) => {
-        debugger
-          let newMenu = new Category(menu.name,menu.id)
-          let newRow = newCategory.displayCategory()
-          categoriesList.appendChild(newRow);
+          let items = []
+          menu.menu_items.forEach((item) => {
+            items.push(item.item_id);
+          });
+          let newMenu = new Menu(menu.name,menu.id,items)
+          let newRow = newMenu.displayMenu()
+          menusList.appendChild(newRow);
       });
     });
 }

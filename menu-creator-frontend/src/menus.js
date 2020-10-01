@@ -1,7 +1,8 @@
 class Menu {
   static all_menus = []
-  constructor(name, items) {
+  constructor(name,id, items) {
     this.name = name;
+    this.id = id;
     this.items = items
     Menu.all_menus.push(this)
   }
@@ -12,7 +13,7 @@ class Menu {
     li.id = `menu_${this.id}`
 
     let link = document.createElement('a')
-    // link.setAttribute('href',`${MENUS}/${this.id}`)
+    link.setAttribute('href',`${MENUS_URL}/${this.id}`)
     link.innerText=`${this.name} `
     link.className = 'menuLink'
 
@@ -33,7 +34,6 @@ class Menu {
     li.appendChild(deleteButton)
     li.appendChild(editButton)
     return li;
-    
   }
 
 }

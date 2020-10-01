@@ -26,7 +26,7 @@ span {
   display: block;
 }
 
-.editItem, .deleteItem, .deleteCategory, .editCategory  {
+.editItem, .deleteItem, .deleteCategory, .editCategory, .deleteMenu, .editMenu  {
   float: right;
   background: none;
   border: none;
