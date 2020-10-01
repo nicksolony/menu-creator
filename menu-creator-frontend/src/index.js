@@ -7,6 +7,7 @@ const addItemForm = document.querySelector('#newItemForm');
 const hideItemButton = document.querySelector('#hideItemForm');
 const addNewMenu = document.querySelector('#newMenuForm')
 const showAllMenus = document.querySelector('#showAllMenus')
+const menusList = document.querySelector('#menusList')
 
 function populateDynamicCategoryList(itemId=0) {
   if (itemId) {
@@ -143,6 +144,8 @@ function showAddMenuForm()
   {
     addNewMenu.style.display='block'
     showAllMenus.style.display='inline'
+    menusList.style.display='none'
+
   }
 
 
@@ -150,6 +153,7 @@ function showAddMenuForm()
     {
       addNewMenu.style.display='none'
       showAllMenus.style.display='none'
+      menusList.style.display='block'
       // document.querySelector('#newItemName').value=''
       // document.querySelector('#newItemDescription').value=''
       // document.querySelector('#newItemPrice').value=''
