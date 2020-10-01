@@ -78,10 +78,8 @@ window.addEventListener('click',(e)=>{
 
   if (e.target.className === 'menuLink') {
     e.preventDefault();
-    console.log(e.target);
     let menu = Menu.findMenu(parseInt(e.target.href.split('http://localhost:3000/menus/')[1],10))
-    console.log(menu);
-    // item.showItem();
+    menu.showMenu();
   }
 
 })

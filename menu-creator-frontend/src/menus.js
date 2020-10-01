@@ -40,4 +40,12 @@ class Menu {
     return (this.all_menus.find(element=>{return element.id===value}))
   }
 
+  showMenu(){
+    let printAndPreviewElements = Array.from(document.getElementsByClassName('printAndPreviewColumn'))
+    printAndPreviewElements.forEach((item) => {
+      item.style.display='block'
+    });
+
+  }
+
 }
