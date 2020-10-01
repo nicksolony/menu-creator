@@ -8,6 +8,7 @@ const hideItemButton = document.querySelector('#hideItemForm');
 const addNewMenu = document.querySelector('#newMenuForm')
 const showAllMenus = document.querySelector('#showAllMenus')
 const menusList = document.querySelector('#menusList')
+const menuPreview = document.querySelector('#menuPreview')
 
 function populateDynamicCategoryList(itemId=0) {
   if (itemId) {
