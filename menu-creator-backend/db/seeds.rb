@@ -24,4 +24,10 @@ Menu.create(name:'Test');
 Menu.create(name:'Test2');
 
 
-# Menuitem.create()
+MenuItem.create(menu_id: 1, item_id:1)
+MenuItem.create(menu_id: 1, item_id:2)
+MenuItem.create(menu_id: 1, item_id:3)
+MenuItem.create(menu_id: 2, item_id:1)
+MenuItem.create(menu_id: 2, item_id:3)
+MenuItem.create(menu_id: 2, item_id:4)
+MenuItem.create(menu_id: 2, item_id:5)
