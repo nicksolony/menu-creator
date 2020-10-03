@@ -92,7 +92,7 @@ window.addEventListener('click',(e)=>{
   }
 
   if (e.target.className === 'addItemToMenu') {
-    // print('asdasd')
+    console.log(e.target);
   }
 
 })
@@ -110,11 +110,13 @@ window.addEventListener('submit',(e)=>{
 
   if (e.target.id === 'addItemForm') {
     Item.createNewItem(e.target)
+    hideAddToMenuButtons()
   }
 
   if (e.target.id === 'editItemForm') {
     let editedItem = Item.findItem('id',parseInt(e.target.parentNode.id.split('item_')[1],10))
     editedItem.updateItem(e.target)
+    hideAddToMenuButtons()
   }
 
 })

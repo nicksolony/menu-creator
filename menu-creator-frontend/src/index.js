@@ -98,6 +98,7 @@ function showAddItemForm()
     addItemForm.style.display='block'
     hideItemButton.style.display='inline'
     populateDynamicCategoryList()
+    hideAddToMenuButtons()
   }
 
 function hideAddItemForm()
@@ -107,6 +108,7 @@ function hideAddItemForm()
     document.querySelector('#newItemName').value=''
     document.querySelector('#newItemDescription').value=''
     document.querySelector('#newItemPrice').value=''
+    hideAddToMenuButtons()
   }
 
 function removeCategory(id,res){
@@ -162,11 +164,15 @@ function showAddMenuForm()
       addNewMenu.style.display='none'
       showAllMenus.style.display='none'
       menusList.style.display='block'
-      const addItemButtons = Array.from(document.querySelectorAll('.addItemToMenu'))
-      addItemButtons.forEach((item) => {
-        item.style.display='none'
-      });
+      hideAddToMenuButtons()
       // document.querySelector('#newItemName').value=''
       // document.querySelector('#newItemDescription').value=''
       // document.querySelector('#newItemPrice').value=''
     }
+
+function hideAddToMenuButtons () {
+  const addItemButtons = Array.from(document.querySelectorAll('.addItemToMenu'))
+  addItemButtons.forEach((item) => {
+    item.style.display='none'
+  });
+}
