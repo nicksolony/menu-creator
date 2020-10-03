@@ -85,8 +85,10 @@ class Menu {
     });
   }
 
-  // printMenu(){
-  //   let printWindow = window.open("", "myWindow", "width=200,height=100");
-  //   printWindow.document.write(this.showMenu)
-  // }
+  static printMenu(menu){
+    let newWin= window.open("");
+    newWin.document.write(menu.outerHTML);
+    newWin.print();
+    newWin.close();
+  }
 }
