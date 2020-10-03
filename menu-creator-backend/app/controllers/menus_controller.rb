@@ -12,15 +12,15 @@ class MenusController < ApplicationController
     render json: @menu, include: :menu_items
   end
 
-  # def create
-  #   @item = Item.new(item_params)
-  #
-  #   if @item.save
-  #     render json: @item, status: :created, location: @item
-  #   else
-  #     render json: @item.errors.full_messages, status: :unprocessable_entity
-  #   end
-  # end
+  def create
+    @menu = Menu.new(menu_params)
+
+    if @menu.save
+      render json: @menu, status: :created, location: @menu
+    else
+      render json: @menu.errors.full_messages, status: :unprocessable_entity
+    end
+  end
   #
   # # PATCH/PUT /items/1
   # def update
@@ -36,15 +36,15 @@ class MenusController < ApplicationController
   #   @item.destroy
   # end
   #
-  # private
-  #   # Use callbacks to share common setup or constraints between actions.
-  #   def set_item
-  #     @item = Item.find(params[:id])
-  #   end
-  #
-  #   # Only allow a trusted parameter "white list" through.
-  #   def item_params
-  #     params.require(:item).permit(:name,:category_id,:description,:price)
-  #   end
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_menu
+      @menu = Menu.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def menu_params
+      params.require(:menu).permit(:name,:menu_items)
+    end
 
 end

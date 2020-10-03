@@ -102,4 +102,10 @@ class Menu {
     const data = { name: newMenuName, menu_items: menuItems };
     createNewMenuInDB(data)
   }
+
+  static showNewMenu(name,id,items){
+    let newMenu = new Menu(name,id,items)
+    let newRow = newMenu.displayMenu()
+    menusList.appendChild(newRow);
+  }
 }

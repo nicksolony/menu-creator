@@ -33,9 +33,10 @@ function loadMenus() {
           menu.menu_items.forEach((item) => {
             items.push(item.item_id);
           });
-          let newMenu = new Menu(menu.name,menu.id,items)
-          let newRow = newMenu.displayMenu()
-          menusList.appendChild(newRow);
+          Menu.showNewMenu(menu.name,menu.id,items)
+          // let newMenu = new Menu(menu.name,menu.id,items)
+          // let newRow = newMenu.displayMenu()
+          // menusList.appendChild(newRow);
       });
     });
 }
@@ -192,6 +193,29 @@ function updateItemInDB(id,formData) {
         itemCategory.appendChild(newRow);
       }
       // populateDynamicCategoryList();
+    })
+    .catch((error) => {
+      window.alert(error)
+    })
+  }
+
+  function createNewMenuInDB(data) {
+    fetch(`${MENUS_URL}`, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
+    return response.json() })
+    .then(data => {
+      debugger
+      Menu.showNewMenu(data.name, data.id, data.items)
+      // const addedMenu = new Menu(data.name, data.id, data.items);
+      // let newRow = addedMenu.displayMenu()
+      // menusList.appendChild(newRow);
+      showAllMenusList();
     })
     .catch((error) => {
       window.alert(error)
