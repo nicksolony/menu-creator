@@ -4,5 +4,6 @@ class Menu < ApplicationRecord
   has_many :categories, :through => :items
   validates :name, presence: true
   validates :name, uniqueness: true
+  accepts_nested_attributes_for :menu_items
 
 end
