@@ -48,12 +48,20 @@ class Item {
     // categoryLink.innerText=`${Category.findCategory('id',this.category_id).name}`
     // categoryLink.className = 'itemCategoryLink'
 
+    let addToMenuButton = document.createElement('button')
+    addToMenuButton.className = `addItemToMenu`
+    addToMenuButton.id = this.id
+    addToMenuButton.innerText = '▶'
+    addToMenuButton.style ="align: right;"
+    addToMenuButton.style ='display:none;' 
+
 
     let deleteButton = document.createElement('button')
     deleteButton.className = `deleteItem`
     deleteButton.id = this.id
     deleteButton.innerText = '✘'
-    deleteButton.style ="align: right;"
+    // deleteButton.style ="align: right;"
+    deleteButton.style ="right;"
 
     let editButton = document.createElement('button')
     editButton.className = `editItem`
@@ -63,7 +71,7 @@ class Item {
 
     li.appendChild(link)
     // li.appendChild(categoryLink)
-
+    li.appendChild(addToMenuButton)
     li.appendChild(deleteButton)
     li.appendChild(editButton)
     return li;
