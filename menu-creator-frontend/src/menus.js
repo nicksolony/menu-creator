@@ -91,4 +91,15 @@ class Menu {
     newWin.print();
     newWin.close();
   }
+
+  static createNewMenu(form) {
+
+    const newMenuName = form.name.value;
+    const menuItems = []
+    form.menuItem.forEach((item) => {
+      menuItems.push(parseInt(item.value,10))
+    });
+    const data = { name: newMenuName, menu_items: menuItems };
+    createNewMenuInDB(data)
+  }
 }

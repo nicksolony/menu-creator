@@ -121,7 +121,7 @@ window.addEventListener('submit',(e)=>{
   }
 
   if (e.target.id === 'addNewMenuForm') {
-    debugger
+    Menu.createNewMenu(e.target)
   }
 
 })
