@@ -76,4 +76,10 @@ class Menu {
 
     });
   }
+  static hideMenu() {
+    let printAndPreviewElements = Array.from(document.getElementsByClassName('printAndPreviewColumn'))
+    printAndPreviewElements.forEach((item) => {
+      item.style.display='none'
+    });
+  }
 }

@@ -82,6 +82,10 @@ window.addEventListener('click',(e)=>{
     menu.showMenu();
   }
 
+  if (e.target === closeMenu) {
+    Menu.hideMenu();
+  }
+
 })
 
 window.addEventListener('submit',(e)=>{
