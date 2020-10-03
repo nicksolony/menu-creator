@@ -316,7 +316,49 @@ class Item {
 
   }
 
+  findOrCreateItemCategoryInNewMenu() {
+    let categoryLi = document.getElementById(`#menuCategory${this.category_id}`)
+    if (!categoryLi) {
+    let categoryLi=document.createElement('li')
+    categoryLi.id = `#menuCategory${this.category_id}`
+    categoryLi.innerText = Category.findCategory('id', this.category_id).name
+    let ul = document.createElement('ul')
+    categoryLi.appendChild(ul)
+    menuItemsList.appendChild(categoryLi);
+    return ul;
+  } else {
+    let ul = document.getElementById(`#menuCategory${this.category_id}`).children[0]
+    return ul;
+  }
+  }
+
+  displayItemInNewMenu(){
+    let li = document.createElement('li')
+    li.className = 'item'
+    li.id = `item_${this.id}`
+    li.innerText=this.name
+
+    let input= document.createElement('input')
+    input.type='hidden'
+    input.name='menuItem'
+    input.value = this.id
+
+    let removeButton = document.createElement('button')
+    removeButton.className = `removeItem`
+    removeButton.id = this.id
+    removeButton.innerText = '✘'
+
+    removeButton.style ="align: right;"
+
+    li.appendChild(removeButton)
+
+    return li;
+  }
+
+
   addItemToMenu(){
-    menuItemsList.appendChild(this.displayItem())
+    let newRow = this.displayItemInNewMenu()
+    let itemCategory = this.findOrCreateItemCategoryInNewMenu();
+    itemCategory.appendChild(newRow);
   }
 }
