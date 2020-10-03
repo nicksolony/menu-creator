@@ -93,6 +93,9 @@ window.addEventListener('click',(e)=>{
 
   if (e.target.className === 'addItemToMenu') {
     console.log(e.target);
+    debugger
+    let item = Item.findItem('id',parseInt(e.target.id,10))
+    item.addItemToMenu()
   }
 
 })

@@ -53,7 +53,7 @@ class Item {
     addToMenuButton.id = this.id
     addToMenuButton.innerText = '▶'
     addToMenuButton.style ="align: right;"
-    addToMenuButton.style ='display:none;' 
+    addToMenuButton.style ='display:none;'
 
 
     let deleteButton = document.createElement('button')
@@ -314,5 +314,9 @@ class Item {
     showField.children[1].remove()
     showField.children[0].replaceWith(showItemForm)
 
+  }
+
+  addItemToMenu(){
+    menuItemsList.appendChild(this.displayItem())
   }
 }

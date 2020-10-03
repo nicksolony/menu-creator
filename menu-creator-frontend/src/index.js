@@ -11,6 +11,7 @@ const menusList = document.querySelector('#menusList')
 const menuPreview = document.querySelector('#menuPreview')
 const closeMenu= document.querySelector('#closeMenu')
 const printMenu = document.querySelector('.printMenu')
+const menuItemsList = document.querySelector('#menuItemsList')
 
 function populateDynamicCategoryList(itemId=0) {
   if (itemId) {
