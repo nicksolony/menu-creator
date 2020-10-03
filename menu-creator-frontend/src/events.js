@@ -85,6 +85,12 @@ window.addEventListener('click',(e)=>{
   if (e.target === closeMenu) {
     Menu.hideMenu();
   }
+  // 
+  // if (e.target===printMenu) {
+  //   let menu = Menu.findMenu(parseInt(e.target.id,10));
+  //   console.log(menu);
+  //   menu.printMenu();
+  // }
 
 })
 

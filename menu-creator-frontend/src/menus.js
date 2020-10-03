@@ -54,6 +54,8 @@ class Menu {
     const menuNamePlaceholder = document.querySelector('#menuNamePlaceholder')
     menuNamePlaceholder.innerText= this.name
 
+    // printMenu.id= this.id
+
     this.items.forEach((itemId) => {
 
       let item = Item.findItem('id',itemId)
@@ -82,4 +84,9 @@ class Menu {
       item.style.display='none'
     });
   }
+
+  // printMenu(){
+  //   let printWindow = window.open("", "myWindow", "width=200,height=100");
+  //   printWindow.document.write(this.showMenu)
+  // }
 }
