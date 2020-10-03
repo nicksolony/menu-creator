@@ -349,7 +349,7 @@ class Item {
     removeButton.innerText = '✘'
 
     removeButton.style ="align: right;"
-
+    li.appendChild(input)
     li.appendChild(removeButton)
 
     return li;

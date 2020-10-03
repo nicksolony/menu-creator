@@ -120,4 +120,8 @@ window.addEventListener('submit',(e)=>{
     hideAddToMenuButtons()
   }
 
+  if (e.target.id === 'addNewMenuForm') {
+    debugger
+  }
+
 })
