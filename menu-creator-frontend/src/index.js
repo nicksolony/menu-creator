@@ -11,7 +11,6 @@ const menusList = document.querySelector('#menusList')
 const menuPreview = document.querySelector('#menuPreview')
 const closeMenu= document.querySelector('#closeMenu')
 // const printMenu = document.querySelector('.printMenu')
-const addItemButtons = Array.from(document.querySelectorAll('.addItemToMenu'))
 
 function populateDynamicCategoryList(itemId=0) {
   if (itemId) {
@@ -149,6 +148,7 @@ function showAddMenuForm()
     addNewMenu.style.display='block'
     showAllMenus.style.display='inline'
     menusList.style.display='none'
+    const addItemButtons = Array.from(document.querySelectorAll('.addItemToMenu'))
     addItemButtons.forEach((item) => {
       item.style.display='block'
     });
@@ -162,6 +162,7 @@ function showAddMenuForm()
       addNewMenu.style.display='none'
       showAllMenus.style.display='none'
       menusList.style.display='block'
+      const addItemButtons = Array.from(document.querySelectorAll('.addItemToMenu'))
       addItemButtons.forEach((item) => {
         item.style.display='none'
       });
