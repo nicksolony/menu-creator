@@ -22,11 +22,10 @@ class MenusController < ApplicationController
 
     # PATCH/PUT /items/1
   def update
-   if @menu.update(menu_params)
-     render json: @menu
-   else
-     render json: @menu.errors.full_messages, status: :unprocessable_entity
-   end
+    @menu.menu_items.destroy_all
+    @menu.update(menu_params)
+     render json: @menu, include: :menu_items
+
   end
 
     # DELETE /items/1

@@ -211,7 +211,14 @@ function loadMenu(id) {
                 items.push(item.item_id);
               });
           }
+          // let menu = Menu.findMenu(data.id);
+          // if (menu) {
+          //   menu.name = data.name
+          //   menu.items = items
+          //   return menu.displayMenu()
+          // } else {
           Menu.showNewMenu(data.name, data.id, items)
+          // }
           }
         })
         .catch((error) => {
@@ -280,30 +287,26 @@ function updateMenuInDB(id,formData) {
     .then(data => {
       let editField = document.querySelector(`#menu_${id}`)
       let editedMenu = Menu.findMenu(id)
-      Menu.all_menus[Menu.all_menus.indexOf(editedMenu
-      )].name = data.name;
-      debugger
+      // Menu.all_menus[Menu.all_menus.indexOf(editedMenu
+      // )].name = data.name;
+      editedMenu.name = data.name
+      let updatedItems=[]
+       if (!!data.menu_items) {
+       data.menu_items.forEach((item) => {
+             updatedItems.push(item.item_id);
+           });
+       }
+      // Menu.all_menus[Menu.all_menus.indexOf(editedMenu
+      // )].items = data.updatedItems;
+      editedMenu.items = updatedItems
+
+      //   Menu.showNewMenu(data.name, data.id, items)
+
+
       editField.replaceWith(editedMenu.displayMenu())
 
-      showAllMenusList();
-      // Menu.all_menus[Menu.all_menus.indexOf(editedMenu
-      // )].items = data.items;
-
-      // if (oldCategory === editedItem.category_id) {
-      //   editField.parentNode.replaceChild(editedItem.displayItem(), editField);
-      // } else {
-      //   let itemCategory = editedItem.findOrCreateItemCategory();
-      //   let newRow = editedItem.displayItem();
-      //   const categoryUl = editField.parentNode
-      //   editField.parentNode.removeChild(editField);
-      //   if (categoryUl.childElementCount === 0) {
-      //     let removedCategory = categoryUl.parentNode
-      //     removedCategory.parentNode.removeChild(removedCategory)
-      //   }
-      //   itemCategory.appendChild(newRow);
-      // }
-      // populateDynamicCategoryList();
-    })
+      showAllMenusList()
+      })
     .catch((error) => {
       window.alert(error)
     })
