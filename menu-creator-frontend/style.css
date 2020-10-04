@@ -1,9 +1,15 @@
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
 
 .deleted {
   color: red;
 }
+#menusColumn, .categories, .items {
+  border-right: 1px solid black;
 
+}
 
 #newItemForm,#hideItemForm,#showAllMenus,#newMenuForm {
   display: none;
@@ -13,7 +19,7 @@ span {
   display: inline-block;
 }
 
-#newMenuForm {
+#newMenuForm, .th {
   text-align: center;
 }
 
