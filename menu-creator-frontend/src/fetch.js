@@ -266,3 +266,44 @@ function deleteMenuFromDb(id) {
       deletedMenu.removeMenu(res)
     });
 }
+
+function updateMenuInDB(id,formData) {
+    fetch(`${MENUS_URL}/${id}`, {
+      method: 'PUT', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(response => { if (!response.ok) {return response.json().then (data=> { console.log(error); throw data}) }
+    return response.json() })
+    .then(data => {
+      let editField = document.querySelector(`#menu_${id}`)
+      let editedMenu = Menu.findMenu(id)
+      Menu.all_menus[Menu.all_menus.indexOf(editedMenu
+      )].name = data.name;
+      
+
+      showAllMenusList();
+      // Menu.all_menus[Menu.all_menus.indexOf(editedMenu
+      // )].items = data.items;
+
+      // if (oldCategory === editedItem.category_id) {
+      //   editField.parentNode.replaceChild(editedItem.displayItem(), editField);
+      // } else {
+      //   let itemCategory = editedItem.findOrCreateItemCategory();
+      //   let newRow = editedItem.displayItem();
+      //   const categoryUl = editField.parentNode
+      //   editField.parentNode.removeChild(editField);
+      //   if (categoryUl.childElementCount === 0) {
+      //     let removedCategory = categoryUl.parentNode
+      //     removedCategory.parentNode.removeChild(removedCategory)
+      //   }
+      //   itemCategory.appendChild(newRow);
+      // }
+      // populateDynamicCategoryList();
+    })
+    .catch((error) => {
+      window.alert(error)
+    })
+  }

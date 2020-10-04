@@ -2,6 +2,7 @@ class MenusController < ApplicationController
   before_action :set_menu, only: [:show, :update, :destroy]
 
 
+
   def index
     @menus = Menu.all.order(:name)
     render json: @menus, include: :menu_items
@@ -44,5 +45,6 @@ class MenusController < ApplicationController
       params.require(:menu).permit(:name,menu_items_attributes:[:item_id])
       # params.require(:menu).permit(:name,:menu_items)
     end
+
 
 end
