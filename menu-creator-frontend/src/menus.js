@@ -1,6 +1,7 @@
 class Menu {
 
   static all_menus = []
+
   constructor(name,id, items) {
     this.name = name;
     this.id = id;
@@ -78,6 +79,7 @@ class Menu {
 
     });
   }
+
   static hideMenu() {
     let printAndPreviewElements = Array.from(document.getElementsByClassName('printAndPreviewColumn'))
     printAndPreviewElements.forEach((item) => {
@@ -113,5 +115,17 @@ class Menu {
     let newMenu = new Menu(name,id,items)
     let newRow = newMenu.displayMenu()
     menusList.appendChild(newRow);
+  }
+
+  removeMenu(res){
+    if (res==='Menu Deleted.') {
+    Menu.all_menus= Menu.all_menus.filter(element=>element.id != this.id)
+    let deletedMenu = document.querySelector(`#menu_${this.id}`)
+    deletedMenu.innerText=res;
+    deletedMenu.className = 'deleted'
+    setTimeout(function (){menusList.removeChild(deletedMenu)},1000);
+    } else {
+      window.alert(res);
+    }
   }
 }

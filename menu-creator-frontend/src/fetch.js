@@ -247,3 +247,22 @@ function createNewMenuInDB(data) {
       window.alert(error)
     })
   }
+
+function deleteMenuFromDb(id) {
+  fetch(`${MENUS_URL}/${id}`,{
+      method: 'DELETE',
+      headers: {
+    'Content-Type': 'application/json'
+  }})
+    .then(res => {
+        if (res.ok) {
+            return Promise.resolve('Menu Deleted.');
+        } else {
+            return Promise.resolve("Can't delete Menu.");
+        }
+    })
+    .then(res => {
+      let deletedMenu = Menu.findMenu(parseInt(id,10))
+      deletedMenu.removeMenu(res)
+    });
+}

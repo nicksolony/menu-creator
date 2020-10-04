@@ -96,6 +96,12 @@ window.addEventListener('click',(e)=>{
     item.addItemToMenu()
   }
 
+  if (e.target.className === 'deleteMenu') {
+
+    deleteMenuFromDb(e.target.id)
+
+  }
+
 })
 
 window.addEventListener('submit',(e)=>{
