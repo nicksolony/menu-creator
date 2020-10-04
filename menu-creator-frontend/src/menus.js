@@ -58,7 +58,6 @@ class Menu {
     // printMenu.id= this.id
 
     this.items.forEach((itemId) => {
-
       let item = Item.findItem('id',itemId)
       let itemCategory = Category.findCategory('id',item.category_id)
 
