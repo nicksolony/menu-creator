@@ -31,8 +31,6 @@ class Item {
   }
   }
 
-
-
   displayItem(){
     let li = document.createElement('li')
     li.className = 'item'
@@ -77,12 +75,14 @@ class Item {
     return li;
     // ul.appendChild(li);
   }
+
   addItemRow() {
     let newRow = this.displayItem()
     // itemsList.appendChild(newRow);
     let itemCategory = this.findOrCreateItemCategory();
     itemCategory.appendChild(newRow);
   }
+
   static createNewItem(form) {
     // const form = e.target;
     const newItemName = form.name.value;
@@ -131,8 +131,6 @@ class Item {
     window.alert(res);
   }
 }
-
-
 
   editItem(){
 
@@ -319,7 +317,7 @@ class Item {
   findOrCreateItemCategoryInNewMenu() {
     let categoryLi = document.getElementById(`#menuCategory${this.category_id}`)
     if (!categoryLi) {
-    let categoryLi=document.createElement('li')
+    categoryLi=document.createElement('li')
     categoryLi.id = `#menuCategory${this.category_id}`
     categoryLi.innerText = Category.findCategory('id', this.category_id).name
     let ul = document.createElement('ul')
@@ -344,7 +342,7 @@ class Item {
     input.value = this.id
 
     let removeButton = document.createElement('button')
-    removeButton.className = `removeItem`
+    removeButton.className = `removeItemFromMenu`
     removeButton.id = this.id
     removeButton.innerText = '✘'
 

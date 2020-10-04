@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded',(e)=>{
 })
 
 window.addEventListener('click',(e)=>{
-   // e.preventDefault();
+
 
   if (e.target.id === 'addCategory') {
     showAddCategoryForm();
@@ -35,9 +35,8 @@ window.addEventListener('click',(e)=>{
   }
 
   if (e.target.className === 'editItem') {
-  // e.preventDefault();
-  let item = Item.findItem('id',parseInt(e.target.id,10))
-  item.editItem()
+    let item = Item.findItem('id',parseInt(e.target.id,10))
+    item.editItem()
   }
 
   if (e.target.id === 'addItem') {
@@ -97,14 +96,23 @@ window.addEventListener('click',(e)=>{
   }
 
   if (e.target.className === 'deleteMenu') {
-
     deleteMenuFromDb(e.target.id)
+  }
 
+  if (e.target.className === 'editMenu') {
+    let menu = Menu.findMenu(parseInt(e.target.id,10))
+    menu.editMenu()
+  }
+
+  if (e.target.className === 'removeItemFromMenu') {
+    e.preventDefault();
+    console.log('remove from menu');
   }
 
 })
 
 window.addEventListener('submit',(e)=>{
+
   e.preventDefault();
   if (e.target.id === 'newCategoryForm') {
     Category.createNewCategory(e.target);

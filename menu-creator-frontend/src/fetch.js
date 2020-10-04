@@ -215,7 +215,7 @@ function loadMenu(id) {
           }
         })
         .catch((error) => {
-          debugger
+
           window.alert("Menu name can't be blank or already exists")
         })
       };

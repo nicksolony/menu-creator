@@ -18,17 +18,17 @@ class MenusController < ApplicationController
       render json: @menu.errors.full_messages, status: :unprocessable_entity
     end
   end
-  #
-  # # PATCH/PUT /items/1
-  # def update
-  #   if @item.update(item_params)
-  #     render json: @item
-  #   else
-  #     render json: @item.errors.full_messages, status: :unprocessable_entity
-  #   end
-  # end
-  #
-  # DELETE /items/1
+
+    # PATCH/PUT /items/1
+  def update
+   if @menu.update(menu_params)
+     render json: @menu
+   else
+     render json: @menu.errors.full_messages, status: :unprocessable_entity
+   end
+  end
+
+    # DELETE /items/1
   def destroy
    @menu.destroy
   end
