@@ -182,5 +182,6 @@ class Menu {
     }
     const data = { name: editedMenuName, menu_items_attributes: menuItems};
     updateMenuInDB(this.id,data)
+    document.querySelector(`#editMenu_${this.id}`).parentNode.removeChild(document.querySelector(`#editMenu_${this.id}`))
   }
 }
