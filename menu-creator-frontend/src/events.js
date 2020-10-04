@@ -111,7 +111,13 @@ window.addEventListener('click',(e)=>{
 
   if (e.target.className === 'removeItemFromMenu') {
     e.preventDefault();
-    console.log('remove from menu');
+    let item = e.target.parentNode
+    let category = item.parentNode
+    category.removeChild(item)
+    if (category.childElementCount === 0) {
+      let removedCategory = category.parentNode
+      removedCategory.parentNode.removeChild(removedCategory)
+    }
   }
 
 })
