@@ -282,7 +282,8 @@ function updateMenuInDB(id,formData) {
       let editedMenu = Menu.findMenu(id)
       Menu.all_menus[Menu.all_menus.indexOf(editedMenu
       )].name = data.name;
-      
+      debugger
+      editField.replaceWith(editedMenu.displayMenu())
 
       showAllMenusList();
       // Menu.all_menus[Menu.all_menus.indexOf(editedMenu

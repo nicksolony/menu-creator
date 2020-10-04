@@ -172,9 +172,13 @@ class Menu {
     const menuItems = []
 
     if (form.menuItem) {
-      form.menuItem.forEach((item) => {
-        menuItems.push({'item_id': parseInt(item.value,10)});
-      });
+        if (form.menuItem.value) {
+          menuItems.push({'item_id': parseInt(form.menuItem.value,10)});
+        } else {
+        form.menuItem.forEach((item) => {
+          menuItems.push({'item_id': parseInt(item.value,10)});
+        });
+        }
     }
     const data = { name: editedMenuName, menu_items_attributes: menuItems};
     updateMenuInDB(this.id,data)
