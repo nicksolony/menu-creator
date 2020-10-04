@@ -201,16 +201,23 @@ function updateItemInDB(id,formData) {
 
 function loadMenu(id) {
     fetch (`${MENUS_URL}/${id}`)
-      .then (resp=>resp.json())
-      .then (data=> {
-              // Menu.all_menus=[]
-        let items=[]
-        data.menu_items.forEach((item) => {
-              items.push(item.item_id);
-            });
-        Menu.showNewMenu(data.name, data.id, items)
-
-        });
+    .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
+    return response.json() })
+    .then(data => {
+        if (!!data.id) {
+          let items=[]
+          if (!!data.menu_items) {
+          data.menu_items.forEach((item) => {
+                items.push(item.item_id);
+              });
+          }
+          Menu.showNewMenu(data.name, data.id, items)
+          }
+        })
+        .catch((error) => {
+          debugger
+          window.alert("Menu name can't be blank or already exists")
+        })
       };
 
 function createNewMenuInDB(data) {
@@ -221,8 +228,12 @@ function createNewMenuInDB(data) {
       },
       body: JSON.stringify(data),
     })
+
     // .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
-    .then(response => {return response.json()})
+    // return response.json() })
+    // .then(data => {
+    .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
+    return response.json() })
     .then(data => {
 
       loadMenu(data.id)

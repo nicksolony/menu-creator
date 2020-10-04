@@ -43,7 +43,6 @@ class Category {
     // const form = e.target;
     const newCategory = form.newCategory.value;
     const data = { name: newCategory };
-    // debugger
     let row = form.parentNode
     row.parentNode.removeChild(row)
     createNewCategoryInDB(data)

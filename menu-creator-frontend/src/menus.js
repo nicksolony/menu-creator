@@ -96,10 +96,15 @@ class Menu {
 
     const newMenuName = form.name.value;
     const menuItems = []
+
+    if (form.menuItem) {
+
+
     form.menuItem.forEach((item) => {
     menuItems.push({'item_id': parseInt(item.value,10)});
 
     });
+    }
     const data = { name: newMenuName, menu_items_attributes: menuItems};
     createNewMenuInDB(data)
   }

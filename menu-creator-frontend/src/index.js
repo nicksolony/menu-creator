@@ -20,7 +20,6 @@ function populateDynamicCategoryList(itemId=0) {
     allCategories= sortCategories(dropDown)
     let defaultOption = document.createElement('option')
     let item  = Item.findItem('id',itemId)
-    // debugger
     let category = Category.findCategory('id',item.category_id)
     defaultOption.value = category.id
     defaultOption.innerText=category.name
@@ -118,7 +117,7 @@ function removeCategory(id,res){
     let deletedCategory = document.querySelector(`#category_${id}`)
     deletedCategory.innerText=res;
     deletedCategory.className = 'deleted'
-    // debugger
+    //
     setTimeout(function () {
     categoriesList.removeChild(deletedCategory)
   },2000)
@@ -134,10 +133,10 @@ function removeCategory(id,res){
 //     let deletedItem = document.querySelector(`#item_${id}`)
 //     deletedItem.innerText=res;
 //     deletedItem.className = 'deleted'
-//     debugger
+//
 //
 //     let categoryUl = document.getElementById(`#category${id}Group`).children[0]
-//     // debugger
+//     //
 //     setTimeout(function () {
 //     categoryUl.removeChild(deletedItem)
 //   },2000)
@@ -155,7 +154,7 @@ function showAddMenuForm()
     addItemButtons.forEach((item) => {
       item.style.display='block'
     });
-
+    cleanNewMenuForm()
 
   }
 
@@ -165,6 +164,7 @@ function showAddMenuForm()
       addNewMenu.style.display='none'
       showAllMenus.style.display='none'
       menusList.style.display='block'
+      cleanNewMenuForm()
       hideAddToMenuButtons()
       // document.querySelector('#newItemName').value=''
       // document.querySelector('#newItemDescription').value=''
@@ -176,4 +176,12 @@ function hideAddToMenuButtons () {
   addItemButtons.forEach((item) => {
     item.style.display='none'
   });
+}
+
+function cleanNewMenuForm() {
+  addNewMenuForm.name.value=''
+  while (menuItemsList.firstChild) {
+       menuItemsList.removeChild(menuItemsList.firstChild);
+   }
+
 }
