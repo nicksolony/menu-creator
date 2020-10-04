@@ -53,6 +53,13 @@ class Item {
     addToMenuButton.style ="align: right;"
     addToMenuButton.style ='display:none;'
 
+    let addToEditMenuButton = document.createElement('button')
+    addToEditMenuButton.className = `addItemToEditMenu`
+    addToEditMenuButton.id = this.id
+    addToEditMenuButton.innerText = '▶'
+    addToEditMenuButton.style ="right;"
+    addToEditMenuButton.style ='display:none;'
+
 
     let deleteButton = document.createElement('button')
     deleteButton.className = `deleteItem`
@@ -68,7 +75,7 @@ class Item {
     editButton.style ="right;"
 
     li.appendChild(link)
-    // li.appendChild(categoryLink)
+    li.appendChild(addToEditMenuButton)
     li.appendChild(addToMenuButton)
     li.appendChild(deleteButton)
     li.appendChild(editButton)
@@ -315,10 +322,11 @@ class Item {
   }
 
   findOrCreateItemCategoryInNewMenu(itemsLocation = menuItemsList) {
+    // debugger
     let categoryLi = itemsLocation.querySelector(`#menuCategory${this.category_id}`)
     if (!categoryLi) {
     categoryLi=document.createElement('li')
-    categoryLi.id = `#menuCategory${this.category_id}`
+    categoryLi.id = `menuCategory${this.category_id}`
     categoryLi.innerText = Category.findCategory('id', this.category_id).name
     let ul = document.createElement('ul')
     categoryLi.appendChild(ul)

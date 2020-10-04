@@ -95,6 +95,11 @@ window.addEventListener('click',(e)=>{
     item.addItemToMenu()
   }
 
+  if (e.target.className === 'addItemToEditMenu') {
+    let item = Item.findItem('id',parseInt(e.target.id,10))
+    item.addItemToEditMenu()
+  }
+
   if (e.target.className === 'deleteMenu') {
     deleteMenuFromDb(e.target.id)
   }

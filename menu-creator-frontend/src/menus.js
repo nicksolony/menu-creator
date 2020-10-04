@@ -130,7 +130,7 @@ class Menu {
 
     let editMenuField = document.querySelector(`#menu_${this.id}`)
     menusList.style.display='none'
-    const addItemButtons = Array.from(document.querySelectorAll('.addItemToMenu'))
+    const addItemButtons = Array.from(document.querySelectorAll('.addItemToEditMenu'))
     addItemButtons.forEach((item) => {
       item.style.display='block'
     });
