@@ -3,8 +3,7 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.all
-
+    @items=Item.joins(:category).merge(Category.order(:name))
     render json: @items, include: :category
   end
 

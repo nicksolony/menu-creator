@@ -3,7 +3,7 @@ class MenusController < ApplicationController
 
 
   def index
-    @menus = Menu.all
+    @menus = Menu.all.order(:name)
     render json: @menus, include: :menu_items
   end
 
