@@ -314,18 +314,18 @@ class Item {
 
   }
 
-  findOrCreateItemCategoryInNewMenu() {
-    let categoryLi = document.getElementById(`#menuCategory${this.category_id}`)
+  findOrCreateItemCategoryInNewMenu(itemsLocation = menuItemsList) {
+    let categoryLi = itemsLocation.querySelector(`#menuCategory${this.category_id}`)
     if (!categoryLi) {
     categoryLi=document.createElement('li')
     categoryLi.id = `#menuCategory${this.category_id}`
     categoryLi.innerText = Category.findCategory('id', this.category_id).name
     let ul = document.createElement('ul')
     categoryLi.appendChild(ul)
-    menuItemsList.appendChild(categoryLi);
+    itemsLocation.appendChild(categoryLi);
     return ul;
   } else {
-    let ul = document.getElementById(`#menuCategory${this.category_id}`).children[0]
+    let ul = itemsLocation.querySelector(`#menuCategory${this.category_id}`).children[0]
     return ul;
   }
   }
@@ -357,6 +357,15 @@ class Item {
   addItemToMenu(){
     let newRow = this.displayItemInNewMenu()
     let itemCategory = this.findOrCreateItemCategoryInNewMenu();
+    itemCategory.appendChild(newRow);
+  }
+
+  addItemToEditMenu(){
+    let newRow = this.displayItemInNewMenu()
+    // debugger
+    let editMenuForm = document.querySelector('#editMenuForm')
+    let itemsLocation = editMenuForm.querySelector('#menuItemsList')
+    let itemCategory = this.findOrCreateItemCategoryInNewMenu(itemsLocation);
     itemCategory.appendChild(newRow);
   }
 }

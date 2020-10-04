@@ -127,31 +127,38 @@ class Menu {
   }
 
   editMenu(){
+
     let editMenuField = document.querySelector(`#menu_${this.id}`)
-
-
-    let editMenuForm = document.getElementById('addNewMenuForm').cloneNode(true)
-    editMenuForm.id = 'editMenuForm'
-
-
-    this.items.forEach((item) => {
-      let menuItem = Item.findItem('id',item)
-      menuItem.addItemToMenu()
-    });
-    const inputName = editMenuForm.querySelector('#newMenuName')
-    inputName.name = 'editMenuName'
-    inputName.value=`${this.name}`
-    
-    const formButton=editMenuForm.querySelector('#submit')
-    formButton.value = 'Update'
-
-    editMenuField.children[2].remove()
-    editMenuField.children[1].remove()
-    editMenuField.children[0].replaceWith(editMenuForm)
+    menusList.style.display='none'
     const addItemButtons = Array.from(document.querySelectorAll('.addItemToMenu'))
     addItemButtons.forEach((item) => {
       item.style.display='block'
     });
 
+    let editMenuForm = addNewMenuForm.cloneNode(true)
+    const menusColumn=document.querySelector('#menusColumn')
+    // editMenuForm.style.display='block'
+    editMenuForm.id = 'editMenuForm'
+
+    menusColumn.appendChild(editMenuForm)
+
+    this.items.forEach((item) => {
+      let menuItem = Item.findItem('id',item)
+      menuItem.addItemToEditMenu()
+    });
+    const inputName = editMenuForm.querySelector('#newMenuName')
+    inputName.name = 'editMenuName'
+    inputName.value=`${this.name}`
+
+    const formButton=editMenuForm.querySelector('#submit')
+    formButton.value = 'Update'
+
+    // editMenuField.children[2].remove()
+    // editMenuField.children[1].remove()
+    // editMenuField.children[0].replaceWith(editMenuForm)
+
+    // editMenuForm.style.display='block'
+    // showAllMenus.style.display='inline'
+    // menusList.style.display='none'
   }
 }
