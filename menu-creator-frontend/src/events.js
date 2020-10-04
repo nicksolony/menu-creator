@@ -151,7 +151,7 @@ window.addEventListener('submit',(e)=>{
 
   if (e.target.className === 'editMenuForm') {
     debugger
-    let editedMenu = Menu.findMenu(parseInt(e.target.parentNode.id.split('menu_')[1],10))
+    let editedMenu = Menu.findMenu(parseInt(e.target.id.split('editMenu_')[1],10))
     editedMenu.updateMenu(e.target)
     hideAddToMenuButtons()
   }

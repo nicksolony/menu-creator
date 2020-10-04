@@ -178,6 +178,13 @@ function hideAddToMenuButtons () {
   });
 }
 
+function hideAddToEditMenuButtons () {
+  const addItemButtons = Array.from(document.querySelectorAll('.addItemToEditMenu'))
+  addItemButtons.forEach((item) => {
+    item.style.display='none'
+  });
+}
+
 function cleanNewMenuForm() {
   addNewMenuForm.name.value=''
   while (menuItemsList.firstChild) {
