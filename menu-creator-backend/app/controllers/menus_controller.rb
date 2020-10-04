@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-  before_action :set_item, only: [:show, :update, :destroy]
+  before_action :set_menu, only: [:show, :update, :destroy]
 
 
   def index
@@ -12,14 +12,8 @@ class MenusController < ApplicationController
   end
 
   def create
-    # @menu = Menu.new(menu_params[:name])
-    debugger
-    @menu = Menu.new(menu_params)
-
-    menuitems = menu_params[:menu_items]
-    menuitems.each {|item| @menu.menu_items.create(item)}
-    if @menu.save
-      render json: @menu, status: :created, location: @menu
+    if @menu = Menu.create(menu_params)
+      render json: @menu
     else
       render json: @menu.errors.full_messages, status: :unprocessable_entity
     end

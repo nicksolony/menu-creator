@@ -27,7 +27,7 @@ function loadMenus() {
   fetch (`${MENUS_URL}`)
     .then (resp=>resp.json())
     .then (data=> {
-      Menu.all_categories=[]
+      Menu.all_menus=[]
       data.forEach((menu) => {
           let items = []
           menu.menu_items.forEach((item) => {
@@ -199,7 +199,21 @@ function updateItemInDB(id,formData) {
     })
   }
 
-  function createNewMenuInDB(data) {
+function loadMenu(id) {
+    fetch (`${MENUS_URL}/${id}`)
+      .then (resp=>resp.json())
+      .then (data=> {
+              // Menu.all_menus=[]
+        let items=[]
+        data.menu_items.forEach((item) => {
+              items.push(item.item_id);
+            });
+        Menu.showNewMenu(data.name, data.id, items)
+
+        });
+      };
+
+function createNewMenuInDB(data) {
     fetch(`${MENUS_URL}`, {
       method: 'POST', // or 'PUT'
       headers: {
@@ -207,11 +221,12 @@ function updateItemInDB(id,formData) {
       },
       body: JSON.stringify(data),
     })
-    .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
-    return response.json() })
+    // .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
+    .then(response => {return response.json()})
     .then(data => {
-      debugger
-      Menu.showNewMenu(data.name, data.id, data.items)
+
+      loadMenu(data.id)
+      // Menu.showNewMenu(data.name, data.id)
       // const addedMenu = new Menu(data.name, data.id, data.items);
       // let newRow = addedMenu.displayMenu()
       // menusList.appendChild(newRow);
