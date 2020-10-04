@@ -128,7 +128,7 @@ class Menu {
 
   editMenu(){
 
-    let editMenuField = document.querySelector(`#menu_${this.id}`)
+    // let editMenuField = document.querySelector(`#menu_${this.id}`)
     menusList.style.display='none'
     const addItemButtons = Array.from(document.querySelectorAll('.addItemToEditMenu'))
     addItemButtons.forEach((item) => {
@@ -138,7 +138,8 @@ class Menu {
     let editMenuForm = addNewMenuForm.cloneNode(true)
     const menusColumn=document.querySelector('#menusColumn')
     // editMenuForm.style.display='block'
-    editMenuForm.id = 'editMenuForm'
+    editMenuForm.className= 'editMenuForm'
+    editMenuForm.id = `editMenu_${this.id}`
 
     menusColumn.appendChild(editMenuForm)
 
@@ -160,5 +161,9 @@ class Menu {
     // editMenuForm.style.display='block'
     // showAllMenus.style.display='inline'
     // menusList.style.display='none'
+  }
+
+  updateMenu(formData) {
+    updateMenuInDB(this.id,formData)
   }
 }

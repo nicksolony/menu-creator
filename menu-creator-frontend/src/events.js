@@ -149,4 +149,13 @@ window.addEventListener('submit',(e)=>{
     Menu.createNewMenu(e.target)
   }
 
+  if (e.target.className === 'editMenuForm') {
+    debugger
+    let editedMenu = Menu.findMenu(parseInt(e.target.parentNode.id.split('menu_')[1],10))
+    editedMenu.updateMenu(e.target)
+    hideAddToMenuButtons()
+  }
+
+
+
 })

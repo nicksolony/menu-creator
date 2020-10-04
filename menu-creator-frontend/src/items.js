@@ -371,7 +371,7 @@ class Item {
   addItemToEditMenu(){
     let newRow = this.displayItemInNewMenu()
     // debugger
-    let editMenuForm = document.querySelector('#editMenuForm')
+    let editMenuForm = document.querySelector('.editMenuForm')
     let itemsLocation = editMenuForm.querySelector('#menuItemsList')
     let itemCategory = this.findOrCreateItemCategoryInNewMenu(itemsLocation);
     itemCategory.appendChild(newRow);
