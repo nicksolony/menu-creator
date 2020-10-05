@@ -1,27 +1,7 @@
-# README
+# MENU CREATOR
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Menu creator app, will allow users to print out simple menus based on added items in each particular menu.
+See user stories and models below for more details on functionality.
 
 ## User Stories
 * A user is able to view items, add new item, edit item and delete item
@@ -48,3 +28,41 @@ Things you may want to cover:
 * menu_item
   * menus (belongs_to)
   * items (belongs_to)
+
+
+##Installation
+1. Clone git directory in the desired location.
+2. App Directory have 2 inside menu-creator-backend and menu-creator-frontend
+3. Open menu-creator-backend
+4. Run bundle install
+5. Run rails db:migrate - to create databases
+6. Run rails db:seed - to populate sample data
+7. Run rails s - to start server
+
+
+
+
+
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
