@@ -30,7 +30,7 @@ See user stories and models below for more details on functionality.
   * items (belongs_to)
 
 
-##Installation
+## Installation
 1. Clone git directory in the desired location.
 2. App Directory have 2 inside menu-creator-backend and menu-creator-frontend
 3. Open menu-creator-backend
