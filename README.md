@@ -38,31 +38,8 @@ See user stories and models below for more details on functionality.
 5. Run rails db:migrate - to create databases
 6. Run rails db:seed - to populate sample data
 7. Run rails s - to start server
+8. When server is running navigate to menu-creator-frontend
+9. Open index.html
 
-
-
-
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
