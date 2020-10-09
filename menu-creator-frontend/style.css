@@ -1,4 +1,11 @@
 
+.header{
+  background-image: url("./images/Header.jpg");
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
 }
