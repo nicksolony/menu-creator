@@ -86,15 +86,10 @@ class Category {
     editField.children[2].remove()
     editField.children[1].remove()
     editField.children[0].replaceWith(editCategoryForm)
-        // console.log(editField);
 
-    // deleteCategoryFromDb(category.id)
-    // let deletedCategory = document.querySelector(`#category_${category.id}`)
-    // categoriesList.removeChild(deletedCategory)
   }
 
   updateCategory(formData) {
-    // populateDynamicCategoryList();
     updateCategoryInDB(this.id,formData.editCategory.value)
   }
 

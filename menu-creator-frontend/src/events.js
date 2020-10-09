@@ -24,12 +24,11 @@ window.addEventListener('click',(e)=>{
 
   if (e.target.className === 'deleteCategory') {
   deleteCategoryFromDb(e.target.id)
-  // let category = Category.findCategory('id',parseInt(e.target.id,10))
-  // category.deleteCategory()
-  } // shold delete Category
+
+} // should delete Category
 
   if (e.target.className === 'editCategory') {
-  // e.preventDefault();
+  
   let category = Category.findCategory('id',parseInt(e.target.id,10))
   category.editCategory()
   }
@@ -48,10 +47,9 @@ window.addEventListener('click',(e)=>{
   };
 
   if (e.target.className === 'deleteItem') {
-  // e.preventDefault();
+
   deleteItemFromDb(e.target.id)
-  // let category = Category.findCategory('id',parseInt(e.target.id,10))
-  // category.deleteCategory()
+
   }
 
   if (e.target.className === 'itemLink') {
