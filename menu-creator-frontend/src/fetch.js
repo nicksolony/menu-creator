@@ -208,33 +208,33 @@ function updateItemInDB(id,formData) {
     })
   }
 
-function loadMenu(id) {
-    fetch (`${MENUS_URL}/${id}`)
-    .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
-    return response.json() })
-    .then(data => {
-        if (!!data.id) {
-          let items=[]
-          if (!!data.menu_items) {
-          data.menu_items.forEach((item) => {
-                items.push(item.item_id);
-              });
-          }
-          // let menu = Menu.findMenu(data.id);
-          // if (menu) {
-          //   menu.name = data.name
-          //   menu.items = items
-          //   return menu.displayMenu()
-          // } else {
-          Menu.showNewMenu(data.name, data.id, items)
-          // }
-          }
-        })
-        .catch((error) => {
-
-          window.alert("Menu name can't be blank or already exists")
-        })
-      };
+// function loadMenu(id) {
+//     fetch (`${MENUS_URL}/${id}`)
+//     .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
+//     return response.json() })
+//     .then(data => {
+//         if (!!data.id) {
+//           let items=[]
+//           if (!!data.menu_items) {
+//           data.menu_items.forEach((item) => {
+//                 items.push(item.item_id);
+//               });
+//           }
+//           // let menu = Menu.findMenu(data.id);
+//           // if (menu) {
+//           //   menu.name = data.name
+//           //   menu.items = items
+//           //   return menu.displayMenu()
+//           // } else {
+//           Menu.showNewMenu(data.name, data.id, items)
+//           // }
+//           }
+//         })
+//         .catch((error) => {
+//
+//           window.alert("Menu name can't be blank or already exists")
+//         })
+//       }; fixed added this function in createNewMenuInDB to avoid 2nd fetch
 
 function createNewMenuInDB(data) {
     fetch(`${MENUS_URL}`, {
@@ -244,19 +244,16 @@ function createNewMenuInDB(data) {
       },
       body: JSON.stringify(data),
     })
-
-    // .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
-    // return response.json() })
-    // .then(data => {
     .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
     return response.json() })
     .then(data => {
-
-      loadMenu(data.id)
-      // Menu.showNewMenu(data.name, data.id)
-      // const addedMenu = new Menu(data.name, data.id, data.items);
-      // let newRow = addedMenu.displayMenu()
-      // menusList.appendChild(newRow);
+        let items=[]
+        if (!!data.menu_items) {
+        data.menu_items.forEach((item) => {
+              items.push(item.item_id);
+            });
+        }
+        Menu.showNewMenu(data.name, data.id, items)
       showAllMenusList();
     })
     .catch((error) => {
