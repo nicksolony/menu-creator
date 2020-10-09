@@ -87,7 +87,9 @@ class Menu {
   }
 
   static printMenu(menu){
+    debugger
     let newWin= window.open("");
+
     newWin.document.write(menu.outerHTML);
     newWin.print();
     newWin.close();
