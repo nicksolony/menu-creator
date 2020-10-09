@@ -27,7 +27,7 @@ function loadCategories() {
 //           newItem.addItemRow()
 //       });
 //     });
-// } FIXED!
+// } FIXED! removed this fetch request and moved it to loadCategories
 
 function loadMenus() {
   fetch (`${MENUS_URL}`)
@@ -40,9 +40,6 @@ function loadMenus() {
             items.push(item.item_id);
           });
           Menu.showNewMenu(menu.name,menu.id,items)
-          // let newMenu = new Menu(menu.name,menu.id,items)
-          // let newRow = newMenu.displayMenu()
-          // menusList.appendChild(newRow);
       });
     });
 }
@@ -170,14 +167,6 @@ function updateItemInDB(id,formData) {
       let editField = document.querySelector(`#item_${id}`)
       let editedItem = Item.findItem('id',id)
       const oldCategory = editedItem.category_id
-      // for (const [key,value] of Object.entries(editedItem)) {
-      //   Item.all_items[Item.all_items.indexOf(editedItem)].key = data.key
-      // }
-
-      // Item.all_items[Item.all_items.indexOf(editedItem
-      // )] = data;
-
-
       Item.all_items[Item.all_items.indexOf(editedItem
       )].name = data.name;
       Item.all_items[Item.all_items.indexOf(editedItem
@@ -201,7 +190,6 @@ function updateItemInDB(id,formData) {
         }
         itemCategory.appendChild(newRow);
       }
-      // populateDynamicCategoryList();
     })
     .catch((error) => {
       window.alert(error)
@@ -293,8 +281,6 @@ function updateMenuInDB(id,formData) {
     .then(data => {
       let editField = document.querySelector(`#menu_${id}`)
       let editedMenu = Menu.findMenu(id)
-      // Menu.all_menus[Menu.all_menus.indexOf(editedMenu
-      // )].name = data.name;
       editedMenu.name = data.name
       let updatedItems=[]
        if (!!data.menu_items) {
@@ -302,15 +288,8 @@ function updateMenuInDB(id,formData) {
              updatedItems.push(item.item_id);
            });
        }
-      // Menu.all_menus[Menu.all_menus.indexOf(editedMenu
-      // )].items = data.updatedItems;
       editedMenu.items = updatedItems
-
-      //   Menu.showNewMenu(data.name, data.id, items)
-
-
       editField.replaceWith(editedMenu.displayMenu())
-
       showAllMenusList()
       })
     .catch((error) => {
