@@ -28,7 +28,7 @@ window.addEventListener('click',(e)=>{
 } // should delete Category
 
   if (e.target.className === 'editCategory') {
-  
+
   let category = Category.findCategory('id',parseInt(e.target.id,10))
   category.editCategory()
   }
@@ -116,6 +116,12 @@ window.addEventListener('click',(e)=>{
       let removedCategory = category.parentNode
       removedCategory.parentNode.removeChild(removedCategory)
     }
+  }
+
+  if (e.target.id === 'searchItem') {
+    let searchItem = document.querySelector('#searchItem').value;
+    let item = Item.findItem('name',searchItem);
+    console.log(item);
   }
 
 })
