@@ -101,6 +101,9 @@ function updateCategoryInDB(id,name) {
 )].name = name
       editField.parentNode.replaceChild(editedCategory.displayCategory(), editField);
       populateDynamicCategoryList();
+      let editedItemCategory = document.getElementById(`#category${id}Group`)
+      let categoryPart2 = editedItemCategory.innerHTML.split('<ul>')[1]
+      editedItemCategory.innerHTML=name.concat('<ul>',categoryPart2)
     })
     .catch((error) => {
       window.alert(error)
