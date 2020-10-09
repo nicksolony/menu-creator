@@ -7,21 +7,27 @@ function loadCategories() {
           let newCategory = new Category(item.name,item.id)
           let newRow = newCategory.displayCategory()
           categoriesList.appendChild(newRow);
+          let categoryItems = item.items
+          categoryItems.forEach((item) => {
+            let newItem = new Item(item.name,item.id,item.description,item.price, item.category_id)
+            newItem.addItemRow()
+          });
+
       });
     });
 }
 
-function loadItems() {
-  fetch (`${ITEMS_URL}`)
-    .then (resp=>resp.json())
-    .then (data=> {
-      Item.all_items=[]
-      data.forEach((item) => {
-          let newItem = new Item(item.name,item.id,item.description,item.price, item.category_id)
-          newItem.addItemRow()
-      });
-    });
-}
+// function loadItems() {
+//   fetch (`${ITEMS_URL}`)
+//     .then (resp=>resp.json())
+//     .then (data=> {
+//       Item.all_items=[]
+//       data.forEach((item) => {
+//           let newItem = new Item(item.name,item.id,item.description,item.price, item.category_id)
+//           newItem.addItemRow()
+//       });
+//     });
+// } FIXED!
 
 function loadMenus() {
   fetch (`${MENUS_URL}`)
@@ -95,6 +101,9 @@ function updateCategoryInDB(id,name) {
 )].name = name
       editField.parentNode.replaceChild(editedCategory.displayCategory(), editField);
       populateDynamicCategoryList();
+      let editedItemCategory = document.getElementById(`#category${id}Group`)
+      let categoryPart2 = editedItemCategory.innerHTML.split('<ul>')[1]
+      editedItemCategory.innerHTML=name.concat('<ul>',categoryPart2)
     })
     .catch((error) => {
       window.alert(error)
@@ -199,33 +208,33 @@ function updateItemInDB(id,formData) {
     })
   }
 
-function loadMenu(id) {
-    fetch (`${MENUS_URL}/${id}`)
-    .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
-    return response.json() })
-    .then(data => {
-        if (!!data.id) {
-          let items=[]
-          if (!!data.menu_items) {
-          data.menu_items.forEach((item) => {
-                items.push(item.item_id);
-              });
-          }
-          // let menu = Menu.findMenu(data.id);
-          // if (menu) {
-          //   menu.name = data.name
-          //   menu.items = items
-          //   return menu.displayMenu()
-          // } else {
-          Menu.showNewMenu(data.name, data.id, items)
-          // }
-          }
-        })
-        .catch((error) => {
-
-          window.alert("Menu name can't be blank or already exists")
-        })
-      };
+// function loadMenu(id) {
+//     fetch (`${MENUS_URL}/${id}`)
+//     .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
+//     return response.json() })
+//     .then(data => {
+//         if (!!data.id) {
+//           let items=[]
+//           if (!!data.menu_items) {
+//           data.menu_items.forEach((item) => {
+//                 items.push(item.item_id);
+//               });
+//           }
+//           // let menu = Menu.findMenu(data.id);
+//           // if (menu) {
+//           //   menu.name = data.name
+//           //   menu.items = items
+//           //   return menu.displayMenu()
+//           // } else {
+//           Menu.showNewMenu(data.name, data.id, items)
+//           // }
+//           }
+//         })
+//         .catch((error) => {
+//
+//           window.alert("Menu name can't be blank or already exists")
+//         })
+//       }; fixed added this function in createNewMenuInDB to avoid 2nd fetch
 
 function createNewMenuInDB(data) {
     fetch(`${MENUS_URL}`, {
@@ -235,19 +244,16 @@ function createNewMenuInDB(data) {
       },
       body: JSON.stringify(data),
     })
-
-    // .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
-    // return response.json() })
-    // .then(data => {
     .then(response => { if (!response.ok) {return response.json().then (data=> {throw data}) }
     return response.json() })
     .then(data => {
-
-      loadMenu(data.id)
-      // Menu.showNewMenu(data.name, data.id)
-      // const addedMenu = new Menu(data.name, data.id, data.items);
-      // let newRow = addedMenu.displayMenu()
-      // menusList.appendChild(newRow);
+        let items=[]
+        if (!!data.menu_items) {
+        data.menu_items.forEach((item) => {
+              items.push(item.item_id);
+            });
+        }
+        Menu.showNewMenu(data.name, data.id, items)
       showAllMenusList();
     })
     .catch((error) => {

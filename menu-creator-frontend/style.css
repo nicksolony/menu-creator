@@ -1,6 +1,18 @@
 
+.header{
+  background-image: url("./images/Header1.png");
+  width: 100%;
+  height: 164px;
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
+  background-image: url("./images/Background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .deleted {
@@ -41,4 +53,13 @@ span {
 
 .printAndPreviewColumn {
   display: none;
+}
+
+.float-left{
+  float: left;
+  margin-left: 75px;
+}
+
+a:link, a:visited {
+  color: grey;
 }
