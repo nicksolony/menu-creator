@@ -71,4 +71,6 @@ a:link, a:visited {
 
 #categoriesList, #menusList {
   line-height: 150%;
+  list-style: none;
+
 }
