@@ -7,21 +7,27 @@ function loadCategories() {
           let newCategory = new Category(item.name,item.id)
           let newRow = newCategory.displayCategory()
           categoriesList.appendChild(newRow);
+          let categoryItems = item.items
+          categoryItems.forEach((item) => {
+            let newItem = new Item(item.name,item.id,item.description,item.price, item.category_id)
+            newItem.addItemRow()
+          });
+
       });
     });
 }
 
-function loadItems() {
-  fetch (`${ITEMS_URL}`)
-    .then (resp=>resp.json())
-    .then (data=> {
-      Item.all_items=[]
-      data.forEach((item) => {
-          let newItem = new Item(item.name,item.id,item.description,item.price, item.category_id)
-          newItem.addItemRow()
-      });
-    });
-}
+// function loadItems() {
+//   fetch (`${ITEMS_URL}`)
+//     .then (resp=>resp.json())
+//     .then (data=> {
+//       Item.all_items=[]
+//       data.forEach((item) => {
+//           let newItem = new Item(item.name,item.id,item.description,item.price, item.category_id)
+//           newItem.addItemRow()
+//       });
+//     });
+// } FIXED!
 
 function loadMenus() {
   fetch (`${MENUS_URL}`)
