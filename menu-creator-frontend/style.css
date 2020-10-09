@@ -62,4 +62,13 @@ span {
 
 a:link, a:visited {
   color: grey;
+  text-decoration: none;
+}
+
+#itemsList a:link, a:visited {
+  font-size: 14px;
+}
+
+#categoriesList, #menusList {
+  line-height: 150%;
 }

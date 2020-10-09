@@ -158,14 +158,6 @@ class Menu {
 
     const formButton=editMenuForm.querySelector('#submit')
     formButton.value = 'Update'
-
-    // editMenuField.children[2].remove()
-    // editMenuField.children[1].remove()
-    // editMenuField.children[0].replaceWith(editMenuForm)
-
-    // editMenuForm.style.display='block'
-    // showAllMenus.style.display='inline'
-    // menusList.style.display='none'
   }
 
   updateMenu(form) {
