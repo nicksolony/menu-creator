@@ -62,12 +62,6 @@ let allCategories = Category.all_categories.sort(function(a, b) {
 return allCategories;
 }
 
-// function loadCategories() {
-//   Category.all_categories.forEach((item) => {
-//     item.displayCategory()
-//     console.log(item);
-//   });
-// };
 
 function showAddCategoryForm()
 {
@@ -127,23 +121,6 @@ function removeCategory(id,res){
   }
 }
 
-// function removeItem(id,res){
-//   if (res==='Item Deleted.') {
-//     Item.all_items= Item.all_items.filter(element=>element.id != id)
-//     let deletedItem = document.querySelector(`#item_${id}`)
-//     deletedItem.innerText=res;
-//     deletedItem.className = 'deleted'
-//
-//
-//     let categoryUl = document.getElementById(`#category${id}Group`).children[0]
-//     //
-//     setTimeout(function () {
-//     categoryUl.removeChild(deletedItem)
-//   },2000)
-//   } else {
-//     window.alert(res);
-//   }
-// }
 
 function showAddMenuForm()
   {
@@ -166,9 +143,6 @@ function showAddMenuForm()
       menusList.style.display='block'
       cleanNewMenuForm()
       hideAddToMenuButtons()
-      // document.querySelector('#newItemName').value=''
-      // document.querySelector('#newItemDescription').value=''
-      // document.querySelector('#newItemPrice').value=''
     }
 
 function hideAddToMenuButtons () {
