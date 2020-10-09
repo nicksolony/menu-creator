@@ -42,3 +42,8 @@ span {
 .printAndPreviewColumn {
   display: none;
 }
+
+.float-left{
+  float: left;
+  margin-left: 75px;
+}
