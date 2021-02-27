@@ -41,5 +41,8 @@ See user stories and models below for more details on functionality.
 8. When server is running navigate to menu-creator-frontend
 9. Open index.html
 
+## Demo
+https://youtu.be/G5gYx6zxjlY
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
