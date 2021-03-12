@@ -117,12 +117,13 @@ window.addEventListener('click',(e)=>{
       removedCategory.parentNode.removeChild(removedCategory)
     }
   }
-
-  if (e.target.id === 'searchItem') {
-    let searchItem = document.querySelector('#searchItem').value;
-    let item = Item.findItem('name',searchItem);
-    console.log(item);
-  }
+  // search functionality added during project review
+  
+  // if (e.target.id === 'searchItem') {
+  //   let searchItem = document.querySelector('#searchItem').value;
+  //   let item = Item.findItem('name',searchItem);
+  //   console.log(item);
+  // }
 
 })
 
