@@ -35,11 +35,12 @@ See user stories and models below for more details on functionality.
 2. App Directory have 2 inside menu-creator-backend and menu-creator-frontend
 3. Open menu-creator-backend
 4. Run bundle install
-5. Run rails db:migrate - to create databases
-6. Run rails db:seed - to populate sample data
-7. Run rails s - to start server
-8. When server is running navigate to menu-creator-frontend
-9. Open index.html
+5. Run rails db:create
+6. Run rails db:migrate - to create databases
+7. Run rails db:seed - to populate sample data
+8. Run rails s - to start server
+9. When server is running navigate to menu-creator-frontend
+10. Open index.html
 
 ## Demo
 https://youtu.be/G5gYx6zxjlY
